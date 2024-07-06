@@ -1,0 +1,1 @@
+export { default as RegistrationPage } from './signUpPage.hbs?raw';
