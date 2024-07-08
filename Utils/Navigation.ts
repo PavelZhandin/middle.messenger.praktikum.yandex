@@ -1,11 +1,10 @@
-import { PAGES } from '../Consts/Pages';
+import { PAGES } from '../src/Consts/Pages';
 import Handlebars from "handlebars";
 
 const navigate = (page) => {
     const [ src, args ] = PAGES[page];
-    console.log(src);
-    console.log(args);
     const handlebarsFunc = Handlebars.compile(src);
+    
     document.getElementById('app').innerHTML = handlebarsFunc(args);
 }
 
