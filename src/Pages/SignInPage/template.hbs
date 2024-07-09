@@ -1,0 +1,12 @@
+{{#> AuthFormContainer}}
+    <form action="#" class="form">
+      {{> BaseHeader label='Войти'}}
+      <div class="inputContainer">
+          {{> AuthFormInput name='login' type='login' label='Логин'}}
+          {{> AuthFormInput name='password' type='password' label='Пароль'}}
+      </div>
+      <div class="form-footer">
+        <button type="button" class="signIn-button">Войти</button>
+      </div>
+    </form>
+{{/ AuthFormContainer}}
