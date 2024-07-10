@@ -29,9 +29,13 @@ export function navigateInitial () {
             navigate('ServerErrorPage');
             break;
         }
+        case '/messenger': {
+            navigate('MainPage');
+            break;
+        }
         
         default: {
-            window.location.pathname = '/notfound'
+            window.location.pathname = '/messenger'
         }
     }
 }

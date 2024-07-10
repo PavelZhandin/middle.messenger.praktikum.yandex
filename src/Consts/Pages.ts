@@ -5,4 +5,5 @@ export const PAGES = {
     'SignInPage': [ Pages.SignInPage ],
     'NotFoundPage': [ Pages.NotFoundPage ],
     'ServerErrorPage': [ Pages.ServerErrorPage ],
+    'MainPage': [ Pages.MainPage ],
 };
