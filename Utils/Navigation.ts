@@ -12,20 +12,26 @@ const navigate = (page) => {
 export function navigateInitial () {
     const path = window.location.pathname;
 
-    console.log(path)
     switch (path) {
         case '/signin': {
             navigate('SignInPage');
             break;
         }
-        
         case '/signup': {
             navigate('SignUpPage');
             break;
         }
-        default : {
-            window.location.pathname = '/signin'
-            // navigate('SignInPage');
+        case '/notfound': {
+            navigate('NotFoundPage');
+            break;
+        }
+        case '/servererror': {
+            navigate('ServerErrorPage');
+            break;
+        }
+        
+        default: {
+            window.location.pathname = '/notfound'
         }
     }
 }
