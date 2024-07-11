@@ -1,12 +1,13 @@
 {{#> AuthFormContainer}}
-    <form action="#" class="form">
+    <form action="/messenger" class="form">
       {{> BaseHeader label='Войти'}}
       <div class="inputContainer">
           {{> AuthFormInput name='login' type='login' label='Логин'}}
           {{> AuthFormInput name='password' type='password' label='Пароль'}}
       </div>
-      <div class="form-footer">
-        <button type="button" class="signIn-button">Войти</button>
+      <div class="form-footer signin-footer">
+        <button type="submit" class="submit-button">Авторизоваться</button>
+        {{> Link label='Нет аккаунта?' href='/signup'}}
       </div>
     </form>
 {{/ AuthFormContainer}}

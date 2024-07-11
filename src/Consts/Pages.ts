@@ -6,4 +6,5 @@ export const PAGES = {
     'NotFoundPage': [ Pages.NotFoundPage ],
     'ServerErrorPage': [ Pages.ServerErrorPage ],
     'MainPage': [ Pages.MainPage ],
+    'ProfilePage': [ Pages.ProfilePage ],
 };

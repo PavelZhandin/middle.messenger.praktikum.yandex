@@ -1,5 +1,5 @@
 {{#> AuthFormContainer}}
-    <form action="#" class="form">
+    <form action="/messenger"  class="form">
       {{> BaseHeader label='Регистрация'}}
       <div class="inputContainer">
           {{> AuthFormInput name='name' type='text' label='Имя'}}
@@ -12,7 +12,7 @@
       </div>
       <div class="form-footer">
         <button type="submit" class="submit-button">Зарегистрироваться</button>
-        <button type="button" class="signIn-button">Войти</button>
+        <a href='/signin' class="signIn-button">Войти</a>
       </div>
     </form>
 {{/ AuthFormContainer}}

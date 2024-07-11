@@ -1,0 +1,58 @@
+.profile-container {
+  display: flex;
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  .backButton-container {
+    max-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .profile-info {
+    min-width: 700px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .avatar {
+      min-width: 130px;
+      min-height: 130px;
+      background: url('../../../public/Profile_icon.svg');
+    }
+
+    .name_title{
+      margin-bottom: 40px;
+    }
+
+    .properties-container { 
+      display: flex;
+      flex-direction: column;
+      min-width: 700px;
+      gap: 10px;
+    }
+
+    .controlButtons-container {
+      min-width: 700px;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      
+      a {
+        font-weight: 600;
+        text-decoration: none;
+        color: #3369F3;
+      }
+
+      a.exit-button{
+        color: #FF0000;
+      }
+      
+    }
+  }
+}

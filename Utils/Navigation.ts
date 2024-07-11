@@ -33,9 +33,13 @@ export function navigateInitial () {
             navigate('MainPage');
             break;
         }
+        case '/profile': {
+            navigate('ProfilePage');
+            break;
+        }
         
         default: {
-            window.location.pathname = '/messenger'
+            window.location.pathname = '/notfound'
         }
     }
 }
