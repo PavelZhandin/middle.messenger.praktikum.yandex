@@ -1,4 +1,4 @@
-import { PAGES } from '../src/Consts/Pages';
+import { PAGES } from '../Consts/Pages';
 import Handlebars from "handlebars";
 
 const navigate = (page) => {
