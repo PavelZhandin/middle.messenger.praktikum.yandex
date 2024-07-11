@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import * as Components from './Components';
-import { navigateInitial, navigateOnClick } from '../Utils/Navigation';
+import { navigateInitial, navigateOnClick } from './Utils/Navigation';
 
 Object.entries(Components).forEach(([ name, component ]) => {
     Handlebars.registerPartial(name, component);
