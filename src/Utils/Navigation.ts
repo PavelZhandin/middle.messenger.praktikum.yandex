@@ -39,18 +39,7 @@ export function navigateInitial () {
         }
         
         default: {
-            window.location.pathname = '/notfound'
+            window.location.pathname = '/signin'
         }
-    }
-}
-
-export function navigateOnClick (e) {
-    const page = e.target.getAttribute('page');
-  
-    if (page) {
-        navigate(page);
-
-        e.preventDefault();
-        e.stopImmediatePropagation();
     }
 }
