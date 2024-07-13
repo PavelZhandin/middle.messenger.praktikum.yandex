@@ -1,7 +1,7 @@
 import * as Pages from '../Pages';
 
 export const PAGES = {
-    'SignUpPage': [ Pages.SignUpPage ],
+    'SignUpPage': [ Pages.RegisterPage ],
     'SignInPage': [ Pages.SignInPage ],
     'NotFoundPage': [ Pages.NotFoundPage ],
     'ServerErrorPage': [ Pages.ServerErrorPage ],

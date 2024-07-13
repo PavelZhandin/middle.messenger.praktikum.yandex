@@ -1,4 +1,4 @@
-export { SignUpPage } from './SignUpPage';
+export { RegisterPage } from './RegisterPage';
 export { SignInPage } from './SignInPage';
 export { NotFoundPage } from './NotFoundPage';
 export { ServerErrorPage } from './ServerErrorPage';
