@@ -6,10 +6,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-  # Requests to URLs matching this pattern...
-  from = "../../assets/images/:file"
-  # ...will resolve to this URL pattern
-  to = "/assets/images/:file"
-  # ... and the status code of 200 will make this behave as a rewrite
-  status = 200
