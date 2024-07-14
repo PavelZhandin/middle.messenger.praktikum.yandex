@@ -8,4 +8,5 @@ export const PAGES = {
     'MainPage': [ Pages.MainPage ],
     'ProfilePage': [ Pages.ProfilePage ],
     'EditProfileDataPage': [ Pages.EditProfileDataPage ],
+    'EditPasswordPage': [ Pages.EditPasswordPage ],
 };

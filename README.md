@@ -21,12 +21,13 @@
 | Главная страница            | http://localhost:3000/messenger     |
 | Профиль                     | http://localhost:3000/profile       |
 | Редактрирование профиля     | http://localhost:3000/editprofile   |
+| Изменение пароля            | http://localhost:3000/editpassword  |
 | 404                         | http://localhost:3000/notfound      |
 | 500                         | http://localhost:3000/servererror   |
 
 ### Макеты приложения
 
-[Figma](https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0-1&t=56Ir5U6i2bh8kQ2F-0)
+[Figma](https://www.figma.com/design/DuxnY6CsP3j8xbN5TssgUP/Messanger_app-design?node-id=0-1&t=yDg41Cp2CX1TUA6V-0)
 
 ### [**Netlify**](https://deploy-preview-3--eclectic-empanada-c80e22.netlify.app/)
 
@@ -39,5 +40,6 @@
 | Главная страница            | https://practicummessanger.netlify.app/messenger     |
 | Профиль                     | https://practicummessanger.netlify.app/profile       |
 | Редактрирование профиля     | https://practicummessanger.netlify.app/editprofile   |
+| Редактрирование пароля      | https://practicummessanger.netlify.app/editpassword  |
 | 404                         | https://practicummessanger.netlify.app/notfound      |
 | 500                         | https://practicummessanger.netlify.app/servererror   |

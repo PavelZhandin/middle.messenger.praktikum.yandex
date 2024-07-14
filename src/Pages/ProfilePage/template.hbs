@@ -4,9 +4,10 @@
         <a href="/messenger">Назад</a>
     </div>
     <div class="profile-info">
-        <div class="avatar"> 
-            <img src="../../../public/Profile_icon.svg" alt="">
-        </div>
+        {{!-- <div class="avatar"> 
+            <img src="../../../public/Profile_icon.svg" alt="profile_icon">
+        </div> --}}
+        {{> ProfileAvatar}}
         <h3 class="name_title">Имя</h3>
         <div class="properties-container">
             {{> ProfileProperty key='Почта' value ='pochta@yandex.ru'}}
@@ -19,7 +20,7 @@
 
         <div class="controlButtons-container">
             <a href="/editprofile">Изменить данные</a>
-            <a href="">Изменить пароль</a>
+            <a href="/editpassword">Изменить пароль</a>
             <a class="exit-button" href="./signin">Выйти</a>
         </div>
     </div>
