@@ -7,4 +7,5 @@ export const PAGES = {
     'ServerErrorPage': [ Pages.ServerErrorPage ],
     'MainPage': [ Pages.MainPage ],
     'ProfilePage': [ Pages.ProfilePage ],
+    'EditProfileDataPage': [ Pages.EditProfileDataPage ],
 };

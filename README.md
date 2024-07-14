@@ -14,14 +14,15 @@
 
 ### Ссылки на страницы приложения при запуске локально
 
-| Экран              | Ссылка                              |
-|:-------------------|-------------------------------------|
-| Авторизация        | http://localhost:3000/signin        |
-| Регистрация        | http://localhost:3000/signup        |
-| Главная страница   | http://localhost:3000/messenger     |
-| Профиль            | http://localhost:3000/profile       |
-| 404                | http://localhost:3000/notfound      |
-| 500                | http://localhost:3000/servererror   |
+| Экран                       | Ссылка                              |
+|:----------------------------|-------------------------------------|
+| Авторизация                 | http://localhost:3000/signin        |
+| Регистрация                 | http://localhost:3000/signup        |
+| Главная страница            | http://localhost:3000/messenger     |
+| Профиль                     | http://localhost:3000/profile       |
+| Редактрирование профиля     | http://localhost:3000/editprofile   |
+| 404                         | http://localhost:3000/notfound      |
+| 500                         | http://localhost:3000/servererror   |
 
 ### Макеты приложения
 
@@ -31,11 +32,12 @@
 
 ### Ссылки на страницы приложения на Netlify
 
-| Экран              | Ссылка                              |
-|:-------------------|-------------------------------------|
-| Авторизация        | https://practicummessanger.netlify.app/signin        |
-| Регистрация        | https://practicummessanger.netlify.app/signup        |
-| Главная страница   | https://practicummessanger.netlify.app/messenger     |
-| Профиль            | https://practicummessanger.netlify.app/profile       |
-| 404                | https://practicummessanger.netlify.app/notfound      |
-| 500                | https://practicummessanger.netlify.app/servererror   |
+| Экран                       | Ссылка                                               |
+|:----------------------------|------------------------------------------------------|
+| Авторизация                 | https://practicummessanger.netlify.app/signin        |
+| Регистрация                 | https://practicummessanger.netlify.app/signup        |
+| Главная страница            | https://practicummessanger.netlify.app/messenger     |
+| Профиль                     | https://practicummessanger.netlify.app/profile       |
+| Редактрирование профиля     | https://practicummessanger.netlify.app/editprofile   |
+| 404                         | https://practicummessanger.netlify.app/notfound      |
+| 500                         | https://practicummessanger.netlify.app/servererror   |

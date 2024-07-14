@@ -5,3 +5,4 @@ export { AuthFormInput } from './authFormInput';
 export { BaseHeader } from './baseHeader';
 export { Link } from './link';
 export { ProfileProperty } from './profileProperty';
+export { ProfilePropertyInput } from './profilePropertyInput';

@@ -37,6 +37,10 @@ export function navigateInitial () {
             navigate('ProfilePage');
             break;
         }
+        case '/editprofile': {
+            navigate('EditProfileDataPage');
+            break;
+        }
         
         default: {
             window.location.pathname = '/signin'
