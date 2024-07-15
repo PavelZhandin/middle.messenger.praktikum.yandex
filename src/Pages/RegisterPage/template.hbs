@@ -2,9 +2,9 @@
     <form action="/messenger"  class="form">
       {{> BaseHeader label='Регистрация'}}
       <div class="inputContainer">
-          {{> AuthFormInput name='name' type='text' label='Имя'}}
+          {{> AuthFormInput name='first_name' type='text' label='Имя'}}
           {{> AuthFormInput name='second_name' type='text' label='Фамилия'}}
-          {{> AuthFormInput name='mail' type='mail' label='Почта'}}
+          {{> AuthFormInput name='email' type='email' label='Почта'}}
           {{> AuthFormInput name='phone' type='phone' label='Телефон'}}
           {{> AuthFormInput name='login' type='login' label='Логин'}}
           {{> AuthFormInput name='password' type='password' label='Пароль'}}
