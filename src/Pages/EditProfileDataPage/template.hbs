@@ -6,11 +6,11 @@
     <div class="profile-info">
         {{> ProfileAvatar}}
         <form action="/messenger" class="properties-container">
-            {{> ProfilePropertyInput name='mail' key='Почта' value ='pochta@yandex.ru'}}
+            {{> ProfilePropertyInput name='email' key='Почта' value ='pochta@yandex.ru'}}
             {{> ProfilePropertyInput name='login' key='Логин' value ='ivanivanov'}}
-            {{> ProfilePropertyInput name='name' key='Имя' value ='Иван'}}
+            {{> ProfilePropertyInput name='first_name' key='Имя' value ='Иван'}}
             {{> ProfilePropertyInput name='second_name' key='Фамилия' value ='Иванов'}}
-            {{> ProfilePropertyInput name='chat_name' key='Имя в чате' value ='Иван'}}
+            {{> ProfilePropertyInput name='display_name' key='Имя в чате' value ='Иван'}}
             {{> ProfilePropertyInput name='phone' key='Телефон' value ='+79099673030'}}
 
             <div class="controlButtons-container">
