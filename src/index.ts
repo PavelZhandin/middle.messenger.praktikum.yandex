@@ -1,0 +1,14 @@
+import Handlebars from "handlebars";
+import * as Components from './Components';
+import { navigateInitial } from './Utils/Navigation';
+
+Object.entries(Components).forEach(([ name, component ]) => {
+    Handlebars.registerPartial(name, component);
+});
+
+Handlebars.registerHelper('safeVal', function (value, safeValue) {
+    var out = value || safeValue;
+    return new Handlebars.SafeString(out);
+});
+
+document.addEventListener('DOMContentLoaded', navigateInitial);

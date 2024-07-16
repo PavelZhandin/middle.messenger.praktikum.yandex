@@ -1,0 +1,18 @@
+.input-wrapper__label{
+  margin-bottom: 8px;
+  color: #999999;
+}
+
+.authFormInput {
+  width: 100%;
+  font-weight: bold;
+  background-color: none;
+  border: none;
+  border-bottom: 2px solid #3369F3;
+  padding: 0;
+  padding-bottom: 8px;
+
+  &:focus { 
+    outline: none;
+  }
+}
