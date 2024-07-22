@@ -1,3 +1,3 @@
-import './authFormInput.scss';
+import "./authFormInput.scss";
 
-export {default as AuthFormInput } from './authFormInput.hbs?raw';
+export { default as AuthFormInput } from "./authFormInput.hbs?raw";

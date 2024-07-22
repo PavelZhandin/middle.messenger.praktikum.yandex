@@ -1,1 +1,1 @@
-export { default as RegisterPage } from './template.hbs?raw';
+export { default as RegisterPage } from "./template.hbs?raw";

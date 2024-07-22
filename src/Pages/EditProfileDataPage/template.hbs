@@ -1,22 +1,20 @@
-
 <div class="profile-container">
-    <div class="backButton-container">
-        <a href="/profile">Назад</a>
-    </div>
-    <div class="profile-info">
-        {{> ProfileAvatar}}
-        <form action="/messenger" class="properties-container">
-            {{> ProfilePropertyInput name='email' key='Почта' value ='pochta@yandex.ru'}}
-            {{> ProfilePropertyInput name='login' key='Логин' value ='ivanivanov'}}
-            {{> ProfilePropertyInput name='first_name' key='Имя' value ='Иван'}}
-            {{> ProfilePropertyInput name='second_name' key='Фамилия' value ='Иванов'}}
-            {{> ProfilePropertyInput name='display_name' key='Имя в чате' value ='Иван'}}
-            {{> ProfilePropertyInput name='phone' key='Телефон' value ='+79099673030'}}
+  <div class="backButton-container">
+    <a href="/profile">Назад</a>
+  </div>
+  <div class="profile-info">
+    {{> ProfileAvatar}}
+    <form action="/messenger" class="properties-container">
+      {{> ProfilePropertyInput name='email' key='Почта' value ='pochta@yandex.ru'}}
+      {{> ProfilePropertyInput name='login' key='Логин' value ='ivanivanov'}}
+      {{> ProfilePropertyInput name='first_name' key='Имя' value ='Иван'}}
+      {{> ProfilePropertyInput name='second_name' key='Фамилия' value ='Иванов'}}
+      {{> ProfilePropertyInput name='display_name' key='Имя в чате' value ='Иван'}}
+      {{> ProfilePropertyInput name='phone' key='Телефон' value ='+79099673030'}}
 
-            <div class="controlButtons-container">
-                <button type="submit" class="save-button">Сохранить</button>
-            </div>
-        </form>
-
-    </div>
+      <div class="controlButtons-container">
+        <button type="submit" class="save-button">Сохранить</button>
+      </div>
+    </form>
+  </div>
 </div>

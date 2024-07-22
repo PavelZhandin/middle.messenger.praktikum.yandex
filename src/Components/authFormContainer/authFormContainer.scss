@@ -4,8 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  
+
   form {
     // min-height: 600px;
     min-width: 340px;
@@ -15,7 +14,7 @@
     .inputContainer {
       display: flex;
       flex-direction: column;
-      gap: 40px
+      gap: 40px;
     }
 
     .form-footer {
@@ -28,23 +27,23 @@
       .submit-button {
         display: block;
         width: 100%;
-        background-color: #3369F3;
-        color: #FFF;
+        background-color: #3369f3;
+        color: #fff;
         padding: 10px 70px;
         border-radius: 8px;
         border: none;
       }
 
-      a{
+      a {
         text-decoration: none;
         border: none;
         background: none;
-        color: #3369F3;
-      } 
+        color: #3369f3;
+      }
     }
   }
-  
-  .base-title { 
+
+  .base-title {
     margin: 20px;
   }
 }

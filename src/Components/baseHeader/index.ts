@@ -1,3 +1,3 @@
-import './baseHeader.scss';
+import "./baseHeader.scss";
 
-export { default as BaseHeader } from './baseHeader.hbs?raw'
+export { default as BaseHeader } from "./baseHeader.hbs?raw";

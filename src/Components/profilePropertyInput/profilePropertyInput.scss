@@ -3,14 +3,14 @@
   justify-content: space-between;
   width: 100%;
   padding-bottom: 10px;
-  border-bottom: 1px solid #EAEAEA;
+  border-bottom: 1px solid #eaeaea;
 
   .property-key,
   .property-value-editable {
     font-size: 16px;
   }
 
-  .property-key{ 
+  .property-key {
     font-weight: bold;
   }
   .property-value-editable {
@@ -18,7 +18,7 @@
     text-align: end;
     color: #999999;
     border: none;
-    &:focus { 
+    &:focus {
       outline: none;
     }
   }

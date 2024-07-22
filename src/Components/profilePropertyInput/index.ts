@@ -1,2 +1,2 @@
-import './profilePropertyInput.scss';
-export { default as ProfilePropertyInput } from './profilePropertyInput.hbs?raw';
+import "./profilePropertyInput.scss";
+export { default as ProfilePropertyInput } from "./profilePropertyInput.hbs?raw";

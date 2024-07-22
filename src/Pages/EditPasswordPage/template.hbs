@@ -1,18 +1,16 @@
-
 <div class="editPassword-container">
-    <div class="backButton-container">
-        <a href="/profile">Назад</a>
-    </div>
-    <div class="profile-info">
-        {{> ProfileAvatar}}
-        <form action="/messenger" class="properties-container">
-            {{> ProfilePropertyInput type="password" name='oldPassword' key='Старый пароль' value ='example1'}}
-            {{> ProfilePropertyInput type="password" name='newPassword' key='Новый пароль' value ='password_example2'}}
+  <div class="backButton-container">
+    <a href="/profile">Назад</a>
+  </div>
+  <div class="profile-info">
+    {{> ProfileAvatar}}
+    <form action="/messenger" class="properties-container">
+      {{> ProfilePropertyInput type="password" name='oldPassword' key='Старый пароль' value ='example1'}}
+      {{> ProfilePropertyInput type="password" name='newPassword' key='Новый пароль' value ='password_example2'}}
 
-            <div class="controlButtons-container">
-                <button type="submit" class="save-button">Сохранить</button>
-            </div>
-        </form>
-
-    </div>
+      <div class="controlButtons-container">
+        <button type="submit" class="save-button">Сохранить</button>
+      </div>
+    </form>
+  </div>
 </div>
