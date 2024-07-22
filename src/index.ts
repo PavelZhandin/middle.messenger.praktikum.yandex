@@ -1,11 +1,14 @@
 import Handlebars from "handlebars";
 import * as Components from './Components';
-import { navigateInitial, navigateOnClick } from './Utils/Navigation';
+import { navigateInitial } from './Utils/Navigation';
 
 Object.entries(Components).forEach(([ name, component ]) => {
     Handlebars.registerPartial(name, component);
 });
 
-document.addEventListener('DOMContentLoaded', navigateInitial);
+Handlebars.registerHelper('safeVal', function (value, safeValue) {
+    var out = value || safeValue;
+    return new Handlebars.SafeString(out);
+});
 
-document.addEventListener('click',navigateOnClick);
+document.addEventListener('DOMContentLoaded', navigateInitial);

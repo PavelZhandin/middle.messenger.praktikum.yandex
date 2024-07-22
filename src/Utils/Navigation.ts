@@ -2,7 +2,6 @@ import { PAGES } from '../Consts/Pages';
 import Handlebars from "handlebars";
 
 const navigate = (page) => {
-    console.log(page)
     const [ src, args ] = PAGES[page];
     const handlebarsFunc = Handlebars.compile(src);
     
@@ -37,20 +36,17 @@ export function navigateInitial () {
             navigate('ProfilePage');
             break;
         }
+        case '/editprofile': {
+            navigate('EditProfileDataPage');
+            break;
+        }
+        case '/editpassword': {
+            navigate('EditPasswordPage');
+            break;
+        }
         
         default: {
-            window.location.pathname = '/notfound'
+            window.location.pathname = '/signin'
         }
-    }
-}
-
-export function navigateOnClick (e) {
-    const page = e.target.getAttribute('page');
-  
-    if (page) {
-        navigate(page);
-
-        e.preventDefault();
-        e.stopImmediatePropagation();
     }
 }

@@ -1,1 +1,0 @@
-export { default as SignUpPage } from './template.hbs?raw';

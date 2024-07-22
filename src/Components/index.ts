@@ -1,7 +1,9 @@
+export { BaseButton } from './baseButton';
 export { MainContainer } from './mainContainer';
 export { AuthFormContainer } from './authFormContainer';
 export { AuthFormInput } from './authFormInput';
 export { BaseHeader } from './baseHeader';
 export { Link } from './link';
 export { ProfileProperty } from './profileProperty';
-export { Button } from './button';
+export { ProfilePropertyInput } from './profilePropertyInput';
+export { ProfileAvatar } from './profileAvatar';
