@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-shadow
 export enum EPages {
   SIGN_UP = "SignUpPage",
   SIGN_IN = "SignInPage",

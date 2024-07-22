@@ -1,5 +1,5 @@
-import { PAGES } from "../Consts/Pages";
 import Handlebars from "handlebars";
+import { PAGES } from "../Consts/Pages";
 import { EPages } from "../Enums";
 
 const navigate = (page: EPages) => {
