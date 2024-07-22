@@ -1,11 +1,15 @@
 import { PAGES } from '../Consts/Pages';
 import Handlebars from "handlebars";
+import { EPages } from '../Enums';
 
-const navigate = (page) => {
+const navigate = (page: EPages) => {
     const [ src, args ] = PAGES[page];
     const handlebarsFunc = Handlebars.compile(src);
+    const appNode = document.getElementById('app');
     
-    document.getElementById('app').innerHTML = handlebarsFunc(args);
+    if(appNode) {
+        appNode.innerHTML = handlebarsFunc(args);
+    }
 }
 
 export function navigateInitial () {
@@ -13,35 +17,35 @@ export function navigateInitial () {
 
     switch (path) {
         case '/signin': {
-            navigate('SignInPage');
+            navigate(EPages.SIGN_IN);
             break;
         }
         case '/signup': {
-            navigate('SignUpPage');
+            navigate(EPages.SIGN_UP);
             break;
         }
         case '/notfound': {
-            navigate('NotFoundPage');
+            navigate(EPages.NOT_FOUND);
             break;
         }
         case '/servererror': {
-            navigate('ServerErrorPage');
+            navigate(EPages.SERVER_ERROR);
             break;
         }
         case '/messenger': {
-            navigate('MainPage');
+            navigate(EPages.MAIN);
             break;
         }
         case '/profile': {
-            navigate('ProfilePage');
+            navigate(EPages.PROFILE);
             break;
         }
         case '/editprofile': {
-            navigate('EditProfileDataPage');
+            navigate(EPages.EDIT_PROFILE);
             break;
         }
         case '/editpassword': {
-            navigate('EditPasswordPage');
+            navigate(EPages.EDIT_PASSWORD);
             break;
         }
         
