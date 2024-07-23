@@ -23,14 +23,15 @@
   },
   "plugins": ["prettier", "@typescript-eslint", "eslint-plugin-prettier"],
   "rules": {
+    "consistent-return": "off",
+    "class-methods-use-this": "off",
+    "no-underscore-dangle": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
       {
         "js": "never",
-        "jsx": "never",
         "ts": "never",
-        "tsx": "never",
         "hbs?raw": "never"
       }
     ],
