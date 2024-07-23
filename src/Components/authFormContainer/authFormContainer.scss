@@ -6,10 +6,9 @@
   align-items: center;
 
   form {
-    // min-height: 600px;
     min-width: 340px;
     padding: 30px;
-    box-shadow: 0px 0px 11px 0px rgba(34, 60, 80, 0.1);
+    box-shadow: 0 0 11px 0 rgba(34, 60, 80, 10%);
 
     .inputContainer {
       display: flex;

@@ -13,11 +13,13 @@
   .property-key {
     font-weight: bold;
   }
+
   .property-value-editable {
     font-weight: bold;
     text-align: end;
-    color: #999999;
+    color: #9999;
     border: none;
+
     &:focus {
       outline: none;
     }

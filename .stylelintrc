@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "rules": {
+    "value-no-vendor-prefix": null,
+    "property-no-vendor-prefix": null,
+    "color-function-notation": "legacy",
+    "selector-class-pattern": "[a-z-_]+"
+
+  },
+  "ignoreFiles": [
+    "build/*"
+  ]
+}
