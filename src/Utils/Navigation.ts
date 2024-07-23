@@ -1,15 +1,19 @@
-import Handlebars from "handlebars";
 import { PAGES } from "../Consts/Pages";
 import { EPages } from "../Enums";
+import { TBlock } from "../Core/Block";
 
 const navigate = (page: EPages) => {
-  const [src, args] = PAGES[page];
-  const handlebarsFunc = Handlebars.compile(src);
-  const appNode = document.getElementById("app");
+    const appNode = document.getElementById("app");
+    const Component = PAGES[page] as unknown as TBlock;
+    console.log(Component)
+    const component = new Component({events:{}});
+    console.log(component)
+    const htmlElement = component.getContent();
+    console.log(htmlElement)
 
-  if (appNode) {
-    appNode.innerHTML = handlebarsFunc(args);
-  }
+    if (appNode && htmlElement) {
+        appNode.appendChild(htmlElement);
+    }
 };
 
 export function navigateInitial() {
