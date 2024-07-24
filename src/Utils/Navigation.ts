@@ -5,11 +5,8 @@ import { TBlock } from "../Core/Block";
 const navigate = (page: EPages) => {
     const appNode = document.getElementById("app");
     const Component = PAGES[page] as unknown as TBlock;
-    console.log(Component)
     const component = new Component({events:{}});
-    console.log(component)
     const htmlElement = component.getContent();
-    console.log(htmlElement)
 
     if (appNode && htmlElement) {
         appNode.appendChild(htmlElement);
