@@ -1,20 +1,20 @@
 .profile_property {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
 
-  .property-key,
-  .property-value {
-    font-size: 16px;
-  }
+    .property-key,
+    .property-value {
+        font-size: 16px;
+    }
 
-  .property-key {
-    font-weight: bold;
-  }
+    .property-key {
+        font-weight: bold;
+    }
 
-  .property-value {
-    color: #9999;
-  }
+    .property-value {
+        color: #9999;
+    }
 }

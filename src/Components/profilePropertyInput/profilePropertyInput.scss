@@ -1,27 +1,27 @@
 .profile-property-input {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
 
-  .property-key,
-  .property-value-editable {
-    font-size: 16px;
-  }
-
-  .property-key {
-    font-weight: bold;
-  }
-
-  .property-value-editable {
-    font-weight: bold;
-    text-align: end;
-    color: #9999;
-    border: none;
-
-    &:focus {
-      outline: none;
+    .property-key,
+    .property-value-editable {
+        font-size: 16px;
     }
-  }
+
+    .property-key {
+        font-weight: bold;
+    }
+
+    .property-value-editable {
+        font-weight: bold;
+        text-align: end;
+        color: #9999;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
 }

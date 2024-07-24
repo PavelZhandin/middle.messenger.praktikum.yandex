@@ -23,6 +23,7 @@
   },
   "plugins": ["prettier", "@typescript-eslint", "eslint-plugin-prettier"],
   "rules": {
+    "indent": ["error", 4],
     "consistent-return": "off",
     "class-methods-use-this": "off",
     "no-underscore-dangle": "off",

@@ -1,18 +1,18 @@
 {{#> AuthFormContainer}}
 <form action="/messenger" class="form">
-  {{> BaseHeader label='Регистрация'}}
-  <div class="inputContainer">
-    {{> AuthFormInput name='first_name' type='text' label='Имя'}}
-    {{> AuthFormInput name='second_name' type='text' label='Фамилия'}}
-    {{> AuthFormInput name='email' type='email' label='Почта'}}
-    {{> AuthFormInput name='phone' type='phone' label='Телефон'}}
-    {{> AuthFormInput name='login' type='login' label='Логин'}}
-    {{> AuthFormInput name='password' type='password' label='Пароль'}}
-    {{> AuthFormInput name='repeat_password' type='password' label='Пароль (ещё раз)'}}
-  </div>
-  <div class="form-footer">
-    <button type="submit" class="submit-button">Зарегистрироваться</button>
-    <a href="/signin" class="signIn-button">Войти</a>
-  </div>
+    {{> BaseHeader label='Регистрация'}}
+    <div class="inputContainer">
+        {{> AuthFormInput name='first_name' type='text' label='Имя'}}
+        {{> AuthFormInput name='second_name' type='text' label='Фамилия'}}
+        {{> AuthFormInput name='email' type='email' label='Почта'}}
+        {{> AuthFormInput name='phone' type='phone' label='Телефон'}}
+        {{> AuthFormInput name='login' type='login' label='Логин'}}
+        {{> AuthFormInput name='password' type='password' label='Пароль'}}
+        {{> AuthFormInput name='repeat_password' type='password' label='Пароль (ещё раз)'}}
+    </div>
+    <div class="form-footer">
+        <button type="submit" class="submit-button">Зарегистрироваться</button>
+        <a href="/signin" class="signIn-button">Войти</a>
+    </div>
 </form>
 {{/ AuthFormContainer}}
