@@ -3,13 +3,13 @@ import Handlebars from "handlebars";
 import EventBus from "./EventBus";
 import { isDeepEqual } from "../Utils/compareFunctions/isDeepEqual";
 
-export interface IProps {
-    events?: Record<string, unknown>;
+export interface IProps extends Record<string, unknown> {
+    events: Record<string, unknown>;
 }
 
 export type TBlock = typeof Block;
 
-export class Block {
+export class Block<Props extends Optional<Partial<IProps>> = Record<string, unknown>> {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
@@ -20,11 +20,9 @@ export class Block {
 
     public id = Math.floor(Math.random() * 100);
 
-    protected _props: IProps;
+    protected props: Props;
 
     protected _element: HTMLElement | null = null;
-
-    protected _meta: { props: IProps } | null = null;
 
     private _eventBus: () => EventBus;
 
@@ -36,12 +34,8 @@ export class Block {
         const eventBus = new EventBus();
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
-        this._meta = {
-            props,
-        };
-
         this.children = children;
-        this._props = this._makePropsProxy(props, this);
+        this.props = this._makePropsProxy(props, this);
         this._eventBus = () => eventBus;
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
@@ -110,7 +104,7 @@ export class Block {
         if (!nextProps) {
             return;
         }
-        Object.assign(this._props, nextProps);
+        Object.assign(this.props, nextProps);
     };
 
     get element() {
@@ -128,7 +122,7 @@ export class Block {
     }
 
     private _render() {
-        const fragment = this.compile(this.render(), this._props);
+        const fragment = this.compile(this.render(), this.props);
 
         const newElement = fragment.firstElementChild as HTMLElement;
 
@@ -142,7 +136,7 @@ export class Block {
     }
 
     private _addEvents() {
-        const { events = {} } = this._props as {
+        const { events = {} } = this.props as {
             events: Record<string, () => void>;
         };
 
@@ -152,7 +146,7 @@ export class Block {
     }
 
     _removeEvents() {
-        const { events = {} } = this._props as {
+        const { events = {} } = this.props as {
             events: Record<string, () => void>;
         };
 
