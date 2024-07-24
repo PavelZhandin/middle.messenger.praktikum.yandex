@@ -7,6 +7,8 @@ export interface IProps {
   events?: Record<string, unknown>;
 }
 
+export type TBlock = typeof Block
+
 export class Block {
   static EVENTS = {
     INIT: "init",
@@ -45,7 +47,7 @@ export class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: IProps) {
+  private _getChildrenAndProps(childrenAndProps: IProps) {
     const props: Record<string, unknown> = {};
     const children: Record<string, Block> = {};
 
@@ -60,7 +62,7 @@ export class Block {
     return { props, children };
   }
 
-  _registerEvents(eventBus: EventBus) {
+  private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -144,7 +146,7 @@ export class Block {
     this._addEvents();
   }
 
-  _addEvents() {
+  private _addEvents() {
     const { events = {} } = this._props as {
       events: Record<string, () => void>;
     };
