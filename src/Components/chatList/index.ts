@@ -1,10 +1,7 @@
-// import { ChatItem } from "../index.ts";
-// import { IChatItemProps } from "../chat-item/chat-item.ts";
-// import template from "./chatList.hbs?raw";
 import { IChat } from "../../Models/Chat";
 import { Block, IProps } from "../../Core/Block";
 import { chatList } from "../../Mocks/chatList";
-import './index.scss';
+import "./index.scss";
 
 interface IChatListProps extends IProps {
     chats: Partial<IChat>[];
@@ -19,14 +16,12 @@ export class ChatList extends Block {
     }
 
     render(): string {
-        return (
-            `<div class="chat-list-container">
+        return `<div class="chat-list-container">
                 <div class="chat-list__chats">
                     {{#each chats}}
                         {{{ ChatItem title=title }}}
                     {{/each}}
                 </div>
-            </div>`
-            );
+            </div>`;
     }
 }

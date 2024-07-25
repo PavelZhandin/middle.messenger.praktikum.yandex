@@ -1,6 +1,6 @@
 import { Block, IProps } from "../../Core/Block";
 import { IChat } from "../../Models/Chat";
-import './index.scss';
+import "./index.scss";
 
 interface IChatListProps extends IProps {
     chats: Partial<IChat>;
@@ -11,16 +11,15 @@ export class ChatItem extends Block {
         super({
             ...props,
             events: {
-                click: () =>{
-                    console.log('clicked');
-                }
-            }
+                click: () => {
+                    console.log("clicked");
+                },
+            },
         });
     }
 
     protected render() {
-        console.log(this.props);
-        return (`
+        return `
             <div class="chatItem">
                 <div class="messageContainer">
                     <span class="styles.title">
@@ -32,6 +31,6 @@ export class ChatItem extends Block {
                     </div>
                 </div>
             </div>
-        `);
+        `;
     }
 }

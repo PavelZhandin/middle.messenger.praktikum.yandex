@@ -1,4 +1,4 @@
-// export { BaseButton } from "./baseButton";
+export { BaseButton } from "./baseButton";
 // export { MainContainer } from "./mainContainer";
 // export { AuthFormContainer } from "./authFormContainer";
 // export { AuthFormInput } from "./authFormInput";
@@ -9,3 +9,5 @@
 // export { ProfileAvatar } from "./profileAvatar";
 export { ChatList } from "./chatList";
 export { ChatItem } from "./chatItem";
+export { MessageList } from "./messageList";
+export { Message } from "./message";

@@ -1,3 +1,21 @@
+import Block, { IProps } from "../../Core/Block";
 import "./baseButton.scss";
 
-export { default as BaseButton } from "./baseButton.hbs?raw";
+export interface IBaseButtonProps {}
+export class BaseButton extends Block<IBaseButtonProps> {
+    constructor(props: IProps) {
+        super({
+            ...props,
+            events: {
+                click: props.onClick,
+            },
+        });
+    }
+
+    protected render(): string {
+        return `
+        <button class="button" type="button">
+            {{ text }}
+        </button>`;
+    }
+}

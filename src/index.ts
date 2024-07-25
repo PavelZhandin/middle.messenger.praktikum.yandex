@@ -4,12 +4,14 @@ import * as Components from "./Components";
 import { navigateInitial } from "./Utils/Navigation";
 
 const allComponents = {
-    'ChatList': Components.ChatList,
-    'ChatItem': Components.ChatItem,
-}
+    BaseButton: Components.BaseButton,
+    ChatList: Components.ChatList,
+    ChatItem: Components.ChatItem,
+    MessageList: Components.MessageList,
+    Message: Components.Message,
+};
 
 Object.entries(allComponents).forEach(([name, component]) => {
-    console.log(component)
     registerComponent(name, component);
 });
 

@@ -35,7 +35,7 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
         this.children = children;
-        this.props = this._makePropsProxy(props, this);
+        this.props = this.makePropsProxy(props);
         this._eventBus = () => eventBus;
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
@@ -104,7 +104,7 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
         if (!nextProps) {
             return;
         }
-        Object.assign(this.props, nextProps);
+        Object.assign(this.props || {}, nextProps);
     };
 
     get element() {
@@ -122,17 +122,19 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
     }
 
     private _render() {
-        const fragment = this.compile(this.render(), this.props);
+        if (this.props) {
+            const fragment = this.compile(this.render(), this.props);
 
-        const newElement = fragment.firstElementChild as HTMLElement;
+            const newElement = fragment.firstElementChild as HTMLElement;
 
-        if (this._element) {
-            this._element.replaceWith(newElement);
+            if (this._element) {
+                this._element.replaceWith(newElement);
+            }
+
+            this._element = newElement;
+
+            this._addEvents();
         }
-
-        this._element = newElement;
-
-        this._addEvents();
     }
 
     private _addEvents() {
@@ -186,7 +188,7 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
         return this.element;
     }
 
-    _makePropsProxy(props: { [index: string | symbol]: unknown }, self: Block) {
+    private makePropsProxy(props: { [index: string | symbol]: unknown }) {
         return new Proxy(props, {
             get(target, prop) {
                 const value = target[prop];
@@ -198,7 +200,7 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
                 // eslint-disable-next-line no-param-reassign
                 target[prop] = value;
 
-                self._eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+                this._eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
                 return true;
             },
             deleteProperty() {
