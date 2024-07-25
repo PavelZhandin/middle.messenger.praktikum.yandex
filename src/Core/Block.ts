@@ -9,13 +9,13 @@ export interface IProps extends Record<string, unknown> {
 
 export type TBlock = typeof Block;
 
-export class Block<Props extends Optional<Partial<IProps>> = Record<string, unknown>> {
+export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     static EVENTS = {
         INIT: "init",
-        FLOW_CDM: "flow:component-did-mount",
-        FLOW_CDU: "flow:component-did-update",
+        FLOW_DID_MOUNT: "flow:component-did-mount",
+        FLOW_DID_UPDATE: "flow:component-did-update",
         FLOW_RENDER: "flow:render",
-        FLOW_CWUM: "flow:component-will-unmount",
+        FLOW_WILL_UNMOUNT: "flow:component-will-unmount",
     };
 
     public id = Math.floor(Math.random() * 100);
@@ -24,7 +24,7 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
 
     protected _element: HTMLElement | null = null;
 
-    private _eventBus: () => EventBus;
+    private eventBus: () => EventBus;
 
     private children: Record<string, Block> = {};
 
@@ -32,11 +32,12 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
 
     constructor(propsWithChildren: IProps) {
         const eventBus = new EventBus();
+        console.log(eventBus)
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
         this.children = children;
-        this.props = this._makePropsProxy(props, this);
-        this._eventBus = () => eventBus;
+        this.props = this.makePropsProxy(props);
+        this.eventBus = () => eventBus;
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
     }
@@ -58,14 +59,14 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
 
     private _registerEvents(eventBus: EventBus) {
         eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_DID_MOUNT, this._componentDidMount.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_DID_UPDATE, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CWUM, this._componentWillUnmount.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_WILL_UNMOUNT, this._componentWillUnmount.bind(this));
     }
 
     private _init() {
-        this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
     private _componentDidMount() {
@@ -75,19 +76,19 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
     protected componentDidMount() {}
 
     public dispatchComponentDidMount() {
-        this._eventBus().emit(Block.EVENTS.FLOW_CDM);
+        this.eventBus().emit(Block.EVENTS.FLOW_DID_MOUNT);
         Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
     }
 
     private _componentDidUpdate(oldProps: IProps, newProps: IProps) {
         const response = this.componentDidUpdate(oldProps, newProps);
+
         if (response) {
-            this._eventBus().emit(Block.EVENTS.FLOW_RENDER);
+            this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
         }
     }
 
-    protected componentDidUpdate(oldProps: IProps, newProps: IProps) {
-        // this.setProps(newProps);
+    protected componentDidUpdate(oldProps: IProps, newProps: IProps): boolean {
         return isDeepEqual(oldProps as Record<string, IProps>, newProps as Record<string, IProps>);
     }
 
@@ -100,11 +101,11 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
         this._removeEvents();
     }
 
-    setProps = (nextProps: IProps) => {
+    public setProps = (nextProps: Props) => {
         if (!nextProps) {
             return;
         }
-        Object.assign(this.props, nextProps);
+        Object.assign(this.props || {}, nextProps);
     };
 
     get element() {
@@ -122,17 +123,20 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
     }
 
     private _render() {
-        const fragment = this.compile(this.render(), this.props);
+        if (this.props) {
+            const fragment = this.compile(this.render(), this.props);
 
-        const newElement = fragment.firstElementChild as HTMLElement;
+            const newElement = fragment.firstElementChild as HTMLElement;
 
-        if (this._element) {
-            this._element.replaceWith(newElement);
+            if (this._element) {
+                this._removeEvents();
+                this._element.replaceWith(newElement);
+            }
+
+            this._element = newElement;
+
+            this._addEvents();
         }
-
-        this._element = newElement;
-
-        this._addEvents();
     }
 
     private _addEvents() {
@@ -158,24 +162,21 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
     private compile(template: string, context: object) {
         const contextAndStubs = {
             ...context,
-            __children: [] as Array<{
-                component: unknown;
-                embed(node: DocumentFragment): void;
-            }>,
+            __children: [],
             __refs: this.refs,
         };
 
         const html = Handlebars.compile(template)(contextAndStubs);
 
-        const temp = document.createElement("template");
+        const templateElement = document.createElement("template");
 
-        temp.innerHTML = html;
+        templateElement.innerHTML = html;
 
         contextAndStubs.__children?.forEach(({ embed }) => {
-            embed(temp.content);
+            embed(templateElement.content);
         });
 
-        return temp.content;
+        return templateElement.content;
     }
 
     protected render(): string {
@@ -186,7 +187,9 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
         return this.element;
     }
 
-    _makePropsProxy(props: { [index: string | symbol]: unknown }, self: Block) {
+    private makePropsProxy(props: { [index: string | symbol]: unknown }) {
+        const self = this;
+    // private makePropsProxy(props: IProps) {
         return new Proxy(props, {
             get(target, prop) {
                 const value = target[prop];
@@ -197,8 +200,7 @@ export class Block<Props extends Optional<Partial<IProps>> = Record<string, unkn
 
                 // eslint-disable-next-line no-param-reassign
                 target[prop] = value;
-
-                self._eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+                self.eventBus().emit(Block.EVENTS.FLOW_DID_UPDATE, oldTarget, target);
                 return true;
             },
             deleteProperty() {
