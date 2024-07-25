@@ -1,14 +1,15 @@
 import Handlebars from "handlebars";
-import { registerComponent } from "Utils/registerComponent";
+import { registerComponent } from "./Utils/registerComponent";
 import * as Components from "./Components";
 import { navigateInitial } from "./Utils/Navigation";
 
-// // Object.entries(Components).forEach(([name, component]) => {
-// Object.entries(Components).forEach(([name, component: typeof Block]) => {
-//     Handlebars.registerPartial(name, component);
-// });
+const allComponents = {
+    'ChatList': Components.ChatList,
+    'ChatItem': Components.ChatItem,
+}
 
-Object.entries(Components.ChatList).forEach(([name, component]) => {
+Object.entries(allComponents).forEach(([name, component]) => {
+    console.log(component)
     registerComponent(name, component);
 });
 

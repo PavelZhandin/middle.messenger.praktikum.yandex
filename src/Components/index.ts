@@ -8,3 +8,4 @@
 // export { ProfilePropertyInput } from "./profilePropertyInput";
 // export { ProfileAvatar } from "./profileAvatar";
 export { ChatList } from "./chatList";
+export { ChatItem } from "./chatItem";

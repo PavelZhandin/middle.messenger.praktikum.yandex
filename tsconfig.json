@@ -5,9 +5,9 @@
         "module": "ESNext",
         "lib": ["ES2020", "DOM", "DOM.Iterable"],
         "skipLibCheck": true,
-        "paths": {
-            "*": ["./src/*"]
-        },
+        // "paths": {
+        //     "*": ["./src/*"]
+        // },
         "moduleResolution": "bundler",
         "allowImportingTsExtensions": true,
         "resolveJsonModule": true,

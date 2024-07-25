@@ -1,14 +1,15 @@
 /* eslint-disable no-param-reassign */
-import Block from "Core/Block";
+import Block from "../Core/Block";
 import Handlebars, { HelperOptions } from "handlebars";
 
-export function registerComponent(name: string, _Component: typeof Block) {
+export function registerComponent(name: string, Component: typeof Block) {
+    console.log(Component)
     if (name in Handlebars.helpers) {
         throw new Error(`The ${name} component is already registered!`);
     }
 
     Handlebars.registerHelper(name, function (this: unknown, { hash, data, fn }: HelperOptions) {
-        const component = new _Component(hash);
+        const component = new Component(hash);
         const dataAttribute = `data-id="${component.id}"`;
 
         if ("ref" in hash) {
