@@ -33,18 +33,5 @@
         width: 100%;
         padding: 20px;
         border: 2px solid #eaeaea;
-
-        .message-input {
-            display: block;
-            border: none;
-            background-color: #efefef;
-            border-radius: 18px;
-            justify-self: end;
-            padding: 10px 20px;
-
-            &::placeholder {
-                color: 999999;
-            }
-        }
     }
 }

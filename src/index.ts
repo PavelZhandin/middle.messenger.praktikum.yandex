@@ -4,6 +4,7 @@ import * as Components from "./Components";
 import { navigateInitial } from "./Utils/Navigation";
 
 const allComponents = {
+    Input: Components.Input,
     BaseButton: Components.BaseButton,
     ChatList: Components.ChatList,
     ChatItem: Components.ChatItem,

@@ -19,7 +19,6 @@ export class Message extends Block<IMessageProps> {
     protected render(): string {
         const { message } = this.props;
         const { main, content } = message;
-        console.log(message);
 
         return `
             <li class="message  ${main ? " message-my" : ""}">
