@@ -1,8 +1,7 @@
 import Block, { IProps } from "../../Core/Block";
 import "./baseButton.scss";
 
-export interface IBaseButtonProps {}
-export class BaseButton extends Block<IBaseButtonProps> {
+export class BaseButton extends Block {
     constructor(props: IProps) {
         super({
             ...props,
@@ -13,8 +12,10 @@ export class BaseButton extends Block<IBaseButtonProps> {
     }
 
     protected render(): string {
+        const { className } = this.props;
+
         return `
-        <button class="button" type="button">
+        <button class="button ${className}" type="button">
             {{ text }}
         </button>`;
     }

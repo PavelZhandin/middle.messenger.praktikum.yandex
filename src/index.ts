@@ -1,6 +1,7 @@
 import Handlebars from "handlebars";
 import { registerComponent } from "./Utils/registerComponent";
 import * as Components from "./Components";
+import * as Partials from "./Partials";
 import { navigateInitial } from "./Utils/Navigation";
 
 const allComponents = {
@@ -15,8 +16,18 @@ const allComponents = {
     Message: Components.Message,
 };
 
+const allPartials = {
+    AuthFormContainer: Partials.AuthFormContainer,
+    FormHeader: Partials.FormHeader,
+    Link: Partials.Link,
+};
+
 Object.entries(allComponents).forEach(([name, component]) => {
     registerComponent(name, component);
+});
+
+Object.entries(allPartials).forEach(([name, partial]) => {
+    Handlebars.registerPartial(name, partial());
 });
 
 Handlebars.registerHelper("safeVal", (value, safeValue) => {

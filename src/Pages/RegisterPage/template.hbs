@@ -1,17 +1,17 @@
 {{#> AuthFormContainer}}
 <form action="/messenger" class="form">
-    {{> BaseHeader label='Регистрация'}}
+    {{> FormHeader label='Регистрация'}}
     <div class="inputContainer">
-        {{> AuthFormInput name='first_name' type='text' label='Имя'}}
-        {{> AuthFormInput name='second_name' type='text' label='Фамилия'}}
-        {{> AuthFormInput name='email' type='email' label='Почта'}}
-        {{> AuthFormInput name='phone' type='phone' label='Телефон'}}
-        {{> AuthFormInput name='login' type='login' label='Логин'}}
-        {{> AuthFormInput name='password' type='password' label='Пароль'}}
-        {{> AuthFormInput name='repeat_password' type='password' label='Пароль (ещё раз)'}}
+        {{{ InputValidated ref="first_name" name="first_name" type="text" label="Имя" validate=validate.first_name}}}
+        {{{ InputValidated ref="second_name" name="second_name" type="text" label="Фамилия" validate=validate.second_name}}}
+        {{{ InputValidated ref="email" name="email" type="email" label="Почта" validate=validate.email}}}
+        {{{ InputValidated ref="phone" name="phone" type="phone" label="Телефон" validate=validate.phone}}}
+        {{{ InputValidated ref="login" name="login" type="text" label="Логин" validate=validate.login }}}
+        {{{ InputValidated ref="password" name="password" type="password" label="Пароль" validate=validate.password}}}
+        {{{ InputValidated ref="repeat_password" name="repeat_password" type="password" label="Пароль (ещё раз)" validate=validate.password_repeat}}}
     </div>
     <div class="form-footer">
-        <button type="submit" class="submit-button">Зарегистрироваться</button>
+        {{{ BaseButton className="submit-button" text="Зарегистрироваться" onClick=handleSubmit }}}
         <a href="/signin" class="signIn-button">Войти</a>
     </div>
 </form>

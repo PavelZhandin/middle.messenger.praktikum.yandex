@@ -134,7 +134,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     }
 
     public value() {
-        return this._element && (<HTMLInputElement>this._element).value
+        return (<HTMLInputElement>this._element)?.value
             ? (<HTMLInputElement>this._element).value
             : false;
     }

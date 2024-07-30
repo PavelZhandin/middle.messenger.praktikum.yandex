@@ -1,13 +1,13 @@
 {{#> AuthFormContainer}}
 <form action="/messenger" class="form">
-    {{> BaseHeader label='Войти'}}
+    {{> FormHeader label='Войти'}}
     <div class="inputContainer">
-        {{> AuthFormInput name='login' type='login' label='Логин'}}
-        {{> AuthFormInput name='password' type='password' label='Пароль'}}
+        {{{ InputValidated ref="login" name="login" type="text" label="Логин" validate=validate.login }}}
+        {{{ InputValidated ref="password" name="password" type="password" label="Пароль" validate=validate.password}}}
     </div>
     <div class="form-footer signin-footer">
-        <button type="submit" class="submit-button">Авторизоваться</button>
-        {{> Link label='Нет аккаунта?' href='/signup'}}
+        {{{ BaseButton className="submit-button" text="Авторизоваться" onClick=handleSubmit }}}
+        {{> Link label='Нет аккаунта?' href='/signup' }}
     </div>
 </form>
 {{/ AuthFormContainer}}
