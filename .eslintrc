@@ -23,6 +23,7 @@
   },
   "plugins": ["prettier", "@typescript-eslint", "eslint-plugin-prettier"],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
     "indent": ["error", 4],
     "consistent-return": "off",
     "class-methods-use-this": "off",
@@ -36,6 +37,7 @@
         "hbs?raw": "never"
       }
     ],
+    "@typescript-eslint/no-this-alias": "off",
     "no-trailing-spaces": "error",
     "comma-dangle": 0,
     "max-len": [2, 100],

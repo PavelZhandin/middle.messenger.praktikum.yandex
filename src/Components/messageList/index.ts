@@ -9,47 +9,26 @@ interface IMessageListProps extends IProps {
     messages: IMessage[];
     currentUser: Partial<IUser>;
     onBlurMessage?: () => void;
+    validate?: (val: string) => string;
     message?: string;
-    errors?: string;
-    onClickSend?: () => void;
+    handleSubmit?: () => void;
 }
 
 export class MessageList extends Block<IMessageListProps> {
     constructor(props: IMessageListProps) {
-        props.onBlurMessage = () => this.validate();
-
         super({
             ...props,
             messages: mockListMessages,
-            onClickSend: () => {
+            handleSubmit: () => {
                 const message = this.refs?.message?.value();
 
-                console.log(message);
+                console.log({ message });
             },
+            validate: validateMessage,
         });
     }
 
-    private validate() {
-        const value = this.refs?.message.value();
-        const error = validateMessage(value);
-
-        this.props.message = value;
-
-        if (error) {
-            this.setProps({ ...this.props, errors: error });
-            console.log(error);
-            this.props.errors = error;
-
-            return false;
-        }
-        this.setProps(this.props);
-
-        return true;
-    }
-
     render() {
-        const { message = "", errors } = this.props;
-        console.log(errors);
         return `
             <div class="message-list">
                 <div class="message-list__header">
@@ -66,16 +45,15 @@ export class MessageList extends Block<IMessageListProps> {
                     {{/each}}
                 </ul>
                 <div class="message-list__footer">
-                    {{{ Input
-                            ref="message"
-                            type="text" 
-                            classes="message-input"     
-                            name="message"
-                            value='${message}'
-                            onBlur=onBlurMessage
+                    {{{ InputValidated
+                        ref="message"
+                        label="Сообщение"
+                        name="message"
+                        validate=validate 
+                        className="message-input"
                     }}}
-                        ${this.props.errors}
-                    {{{ BaseButton text="Send" onClick=onClickSend }}}
+                    {{{ InputError error=error ref="inputError"}}}
+                    {{{ BaseButton text="Send" onClick=handleSubmit }}}
                 </div>
             </div>
             `;

@@ -1,36 +1,43 @@
-import Block, { IProps } from "../../Core/Block.ts";
+import Block, { IProps } from "../../Core/Block";
 import "./input.scss";
 
 interface IInputProps extends IProps {
-    classes: string,
-    placeholder: string,
-    onBlur:()=>void,
-    ref:string,
-    name:string,
-    value:string
-    type: 'text' | 'password',
+    className: string;
+    placeholder: string;
+    onBlur: () => void;
+    ref: string;
+    name: string;
+    value: string;
+    type: "text" | "password";
 }
 
 export class Input extends Block<IInputProps> {
     constructor(props: IInputProps) {
-        props.events={
-            blur: props.onBlur || (() => {})
-        };
-        super(props)
+        super({
+            ...props,
+            events: {
+                blur: props.onBlur || (() => {}),
+            },
+        });
+    }
+
+    public value() {
+        const input = this.element as HTMLInputElement;
+        return input.value;
     }
 
     protected render(): string {
-        const { classes, placeholder,ref,value, name, type } = this.props;
-        
-        return (`
+        const { className, placeholder, ref, value, name, type } = this.props;
+
+        return `
             <input
-                class="${classes}"
-                placeholder="${placeholder || ''}"
+                class="${className}"
+                placeholder="${placeholder || ""}"
                 ref="${ref}"
                 name="${name}"
                 value="${value}"
                 type="${type}" 
             />
-        `)
+        `;
     }
 }

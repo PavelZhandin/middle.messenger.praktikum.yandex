@@ -1,5 +1,8 @@
 export { BaseButton } from "./baseButton";
 export { Input } from "./input";
+export { InputError } from "./inputError";
+export { InputValidated } from "./inputValidated";
+export { ErrorLine } from "./errorLine";
 // export { MainContainer } from "./mainContainer";
 // export { AuthFormContainer } from "./authFormContainer";
 // export { AuthFormInput } from "./authFormInput";

@@ -5,6 +5,9 @@ import { navigateInitial } from "./Utils/Navigation";
 
 const allComponents = {
     Input: Components.Input,
+    InputError: Components.InputError,
+    InputValidated: Components.InputValidated,
+    ErrorLine: Components.ErrorLine,
     BaseButton: Components.BaseButton,
     ChatList: Components.ChatList,
     ChatItem: Components.ChatItem,

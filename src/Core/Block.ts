@@ -4,7 +4,7 @@ import EventBus from "./EventBus";
 import { isDeepEqual } from "../Utils/compareFunctions/isDeepEqual";
 
 export interface IProps extends Record<string, unknown> {
-    events: Record<string, unknown>;
+    events?: Record<string, unknown>;
 }
 
 export type TBlock = typeof Block;
@@ -22,7 +22,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
 
     protected props: Props;
 
-    protected _element: HTMLElement | null = null;
+    protected _element: Nullable<HTMLElement> = null;
 
     private eventBus: () => EventBus;
 
@@ -32,13 +32,13 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
 
     constructor(propsWithChildren: IProps) {
         const eventBus = new EventBus();
-        console.log(eventBus);
+
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
         this.children = children;
         this.props = this.makePropsProxy(props);
         this.eventBus = () => eventBus;
-        this._registerEvents(eventBus);
+        this._registerEvents();
         eventBus.emit(Block.EVENTS.INIT);
     }
 
@@ -57,12 +57,32 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
         return { props, children };
     }
 
-    private _registerEvents(eventBus: EventBus) {
-        eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_DID_MOUNT, this._componentDidMount.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_DID_UPDATE, this._componentDidUpdate.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_WILL_UNMOUNT, this._componentWillUnmount.bind(this));
+    private _addEvents() {
+        const { events = {} } = this.props as {
+            events: Record<string, () => void>;
+        };
+
+        Object.keys(events).forEach((eventName) => {
+            this._element?.addEventListener(eventName, events[eventName]);
+        });
+    }
+
+    private _removeEvents() {
+        const { events = {} } = this.props as {
+            events: Record<string, () => void>;
+        };
+
+        Object.keys(events).forEach((eventName) => {
+            this._element?.removeEventListener(eventName, events[eventName]);
+        });
+    }
+
+    private _registerEvents() {
+        this.eventBus().on(Block.EVENTS.INIT, this._init.bind(this));
+        this.eventBus().on(Block.EVENTS.FLOW_DID_MOUNT, this._componentDidMount.bind(this));
+        this.eventBus().on(Block.EVENTS.FLOW_DID_UPDATE, this._componentDidUpdate.bind(this));
+        this.eventBus().on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+        this.eventBus().on(Block.EVENTS.FLOW_WILL_UNMOUNT, this._componentWillUnmount.bind(this));
     }
 
     private _init() {
@@ -88,8 +108,12 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
         }
     }
 
-    protected componentDidUpdate(oldProps: IProps, newProps: IProps): boolean {
-        return isDeepEqual(oldProps as Record<string, IProps>, newProps as Record<string, IProps>);
+    // protected componentDidUpdate(oldProps: IProps, newProps: IProps): boolean {
+    //     return isDeepEqual(oldProps as Record<string, IProps>, newProps as Record<string, IProps>);
+    // }
+
+    protected componentDidUpdate(_oldProps?: unknown, _newProps?: unknown): boolean {
+        return true;
     }
 
     private _componentWillUnmount() {
@@ -101,12 +125,9 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
         this._removeEvents();
     }
 
-    public setProps = (nextProps: Props) => {
-        if (!nextProps) {
-            return;
-        }
+    public setProps(nextProps: Props) {
         Object.assign(this.props || {}, nextProps);
-    };
+    }
 
     get element() {
         return this._element;
@@ -115,7 +136,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     public value() {
         return this._element && (<HTMLInputElement>this._element).value
             ? (<HTMLInputElement>this._element).value
-            : "";
+            : false;
     }
 
     public getRefs() {
@@ -139,31 +160,11 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
         }
     }
 
-    private _addEvents() {
-        const { events = {} } = this.props as {
-            events: Record<string, () => void>;
-        };
-
-        Object.keys(events).forEach((eventName) => {
-            this._element?.addEventListener(eventName, events[eventName]);
-        });
-    }
-
-    _removeEvents() {
-        const { events = {} } = this.props as {
-            events: Record<string, () => void>;
-        };
-
-        Object.keys(events).forEach((eventName) => {
-            this._element?.removeEventListener(eventName, events[eventName]);
-        });
-    }
-
     private compile(template: string, context: object) {
         const contextAndStubs = {
             ...context,
-            __children: [],
             __refs: this.refs,
+            __children: [],
         };
 
         const html = Handlebars.compile(template)(contextAndStubs);
@@ -172,7 +173,8 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
 
         templateElement.innerHTML = html;
 
-        contextAndStubs.__children?.forEach(({ embed }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        contextAndStubs.__children?.forEach(({ embed }: any) => {
             embed(templateElement.content);
         });
 
@@ -189,6 +191,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
 
     private makePropsProxy(props: { [index: string | symbol]: unknown }) {
         const self = this;
+
         // private makePropsProxy(props: IProps) {
         return new Proxy(props, {
             get(target, prop) {
