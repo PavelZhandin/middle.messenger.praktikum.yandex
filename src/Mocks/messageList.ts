@@ -4,7 +4,7 @@ export const message1 = {
     chat_id: 312,
     time: "2020-01-02",
     type: "text",
-    content: "Круто!!!",
+    content: "Пример сообщения 1",
     main: true,
 };
 
@@ -14,7 +14,7 @@ export const message2 = {
     chat_id: 312,
     time: "2020-01-02",
     type: "text",
-    content: "Привет! Смотри, тут всплыл интересный кусок лунной космической истории",
+    content: "Пример сообщения 2, Пример сообщения 2, Пример сообщения 2",
     main: false,
 };
 
@@ -24,7 +24,7 @@ export const message3 = {
     chat_id: 312,
     time: "2020-01-02",
     type: "file",
-    content: "Круто!!!",
+    content: "Пример сообщения 3",
     main: true,
 };
 

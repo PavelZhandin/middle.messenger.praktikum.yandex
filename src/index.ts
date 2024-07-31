@@ -18,8 +18,11 @@ const allComponents = {
 
 const allPartials = {
     AuthFormContainer: Partials.AuthFormContainer,
+    MainContainer: Partials.MainContainer,
     FormHeader: Partials.FormHeader,
     Link: Partials.Link,
+    ProfileProperty: Partials.ProfileProperty,
+    ProfileAvatar: Partials.ProfileAvatar,
 };
 
 Object.entries(allComponents).forEach(([name, component]) => {

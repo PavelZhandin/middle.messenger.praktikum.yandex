@@ -5,16 +5,16 @@
     <div class="profile-info">
         {{> ProfileAvatar}}
         <form action="/messenger" class="properties-container">
-            {{> ProfilePropertyInput name='email' key='Почта' value ='pochta@yandex.ru'}}
-            {{> ProfilePropertyInput name='login' key='Логин' value ='ivanivanov'}}
-            {{> ProfilePropertyInput name='first_name' key='Имя' value ='Иван'}}
-            {{> ProfilePropertyInput name='second_name' key='Фамилия' value ='Иванов'}}
-            {{> ProfilePropertyInput name='display_name' key='Имя в чате' value ='Иван'}}
-            {{> ProfilePropertyInput name='phone' key='Телефон' value ='+79099673030'}}
+        {{{ InputValidated ref="email" name="email" type="email" label="Почта" validate=validate.email }}}
+        {{{ InputValidated ref="login" name="login" type="text" label="Логин" validate=validate.login }}}
+        {{{ InputValidated ref="first_name" name="first_name" type="email" label="Логин" validate=validate.login }}}
+        {{{ InputValidated ref="second_name" name="second_name" type="text" label="Фамилия" validate=validate.second_name }}}
+        {{{ InputValidated ref="display_name" name="display_name" type="text" label="Имя в чате" validate=validate.display_name }}}
+        {{{ InputValidated ref="phone" name="phone" type="phone" label="Телефон" validate=validate.phone }}}
 
-            <div class="controlButtons-container">
-                <button type="submit" class="save-button">Сохранить</button>
-            </div>
+        <div class="controlButtons-container">
+            {{{ BaseButton className="submit-button" text="Сохранить" onClick=handleSubmit }}}
+        </div>
         </form>
     </div>
 </div>

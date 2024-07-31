@@ -28,7 +28,24 @@
             display: flex;
             flex-direction: column;
             min-width: 700px;
-            gap: 10px;
+            gap: 30px;
+
+            input {
+                font-weight: bold;
+                text-align: end;
+                color: #9999;
+                border: none;
+                border-bottom: 1px solid #eaeaea;
+                &:focus {
+                    outline: none;
+                }
+
+                &:focus ~ label,
+                &:not(:placeholder-shown) ~ label {
+                    top: 0;
+                    font-size: 16px;
+                }
+            }
         }
 
         .controlButtons-container {

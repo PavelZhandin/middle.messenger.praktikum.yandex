@@ -3,13 +3,14 @@
         <a href="/profile">Назад</a>
     </div>
     <div class="profile-info">
-        {{> ProfileAvatar}}
+        {{> ProfileAvatar }}
         <form action="/messenger" class="properties-container">
-            {{> ProfilePropertyInput type="password" name='oldPassword' key='Старый пароль' value ='example1'}}
-            {{> ProfilePropertyInput type="password" name='newPassword' key='Новый пароль' value ='password_example2'}}
+            {{{ InputValidated ref="oldPassword" name="oldPassword" type="password" label="Старый пароль" validate=validate.oldPassword }}}
+            {{{ InputValidated ref="newPassword" name="newPassword" type="password" label="Новый пароль" validate=validate.newPassword }}}
+            {{{ InputValidated ref="newPasswordRepeat" name="newPasswordRepeat" type="password" label="Новый пароль" validate=validate.newPassword }}}
 
             <div class="controlButtons-container">
-                <button type="submit" class="save-button">Сохранить</button>
+                {{{ BaseButton className="submit-button" text="Сохранить" onClick=handleSubmit }}}
             </div>
         </form>
     </div>

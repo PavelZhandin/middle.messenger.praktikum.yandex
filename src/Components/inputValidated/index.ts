@@ -32,7 +32,6 @@ export class InputValidated extends Block<any> {
         const error = this.props.validate?.(input.value);
 
         if (error) {
-            console.log(error);
             this.refs.errorLine.setProps({ error });
             return false;
         }
