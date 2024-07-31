@@ -17,7 +17,7 @@
     .property-value-editable {
         font-weight: bold;
         text-align: end;
-        color: #9999;
+        color: var(--gray-0);
         border: none;
 
         &:focus {

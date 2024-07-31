@@ -33,7 +33,7 @@
             input {
                 font-weight: bold;
                 text-align: end;
-                color: #9999;
+                color: var(--gray-0);
                 border: none;
                 border-bottom: 1px solid #eaeaea;
                 &:focus {
@@ -58,7 +58,7 @@
 
             button.save-button {
                 background-color: var(--blue);
-                color: #fff;
+                color: var(--white);
                 padding: 10px 70px;
                 border-radius: 8px;
                 border: none;

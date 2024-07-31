@@ -23,7 +23,6 @@ export class ChatItem extends Block {
             <div class="chatItem">
                 <div class="messageContainer">
                     <span class="styles.title">
-                    ${this.props.title}
                         {{title}}
                     </span>
                     <div class="styles.message">

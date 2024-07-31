@@ -42,22 +42,19 @@
         max-height: 200px;
         padding-top: 10px;
         border-top: 1px solid var(--gray-light);
-        // display: grid;
-        // grid-template-columns: 1fr auto;
         display: flex;
-        // align-items: center;
 
         button {
             min-width: 200px;
         }
         .message-input {
             border: none;
-            background-color: var(--gray-0);
+            background-color: var(--gray-1);
             border-radius: 18px;
             padding: 10px 20px;
 
             &::placeholder {
-                color: 999999;
+                color: var(--gray-0);
             }
 
             &:focus {

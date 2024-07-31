@@ -1,72 +1,54 @@
-// eslint-disable-next-line no-shadow
-export enum ERequestMethod {
-    GET = "GET",
-    POST = "POST",
-    PUT = "PUT",
-    DELETE = "DELETE",
-}
+import { ERestMethod } from "../../Enums/http";
+import { THttpMethod, TOptionsRequest } from "../../Models/http";
 
-type TOptionsRequest = {
-    data: string;
-    method: ERequestMethod;
-    timeout: number;
-    headers: Record<string, string>;
-    params: object;
-};
-
-type HTTPMethod = (url: string, options?: Partial<TOptionsRequest>) => Promise<unknown>;
-
-/**
- *  Get string of query params from object params
- * @param data
- */
 function queryStringify(data: object) {
     let result = "?";
-    result += Object.entries(data)
-        .map(([key, value]) => {
-            return `${key}=${Array.isArray(value) ? value.join(",") : String(value)}`;
-        })
-        .join("&");
+
+    Object.entries(data).forEach(([key, value]) => {
+        result = result.concat(key, "=", value, "&");
+    });
+
     return result;
 }
 
-class HTTPTransport {
-    get: HTTPMethod = (url, options = {}) => {
+class HTTPClient {
+    get: THttpMethod = (url, options = {}) => {
         return this.request(
             url,
             {
                 ...options,
+                method: ERestMethod.GET,
                 data: queryStringify(options.params || {}) || "",
-                method: ERequestMethod.GET,
             },
             options.timeout,
         );
     };
 
-    put: HTTPMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: ERequestMethod.PUT }, options.timeout);
+    put: THttpMethod = (url, options = {}) => {
+        return this.request(url, { ...options, method: ERestMethod.PUT }, options.timeout);
     };
 
-    post: HTTPMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: ERequestMethod.POST }, options.timeout);
+    post: THttpMethod = (url, options = {}) => {
+        return this.request(url, { ...options, method: ERestMethod.POST }, options.timeout);
     };
 
-    delete: HTTPMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: ERequestMethod.DELETE }, options.timeout);
+    delete: THttpMethod = (url, options = {}) => {
+        return this.request(url, { ...options, method: ERestMethod.DELETE }, options.timeout);
     };
 
     request = (
         url: string,
-        options: Partial<TOptionsRequest> = { method: ERequestMethod.GET },
+        options: TOptionsRequest = { method: ERestMethod.GET },
         timeout = 5000,
     ) => {
         const { method, headers, data } = options;
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
+            const isGet = method === ERestMethod.GET;
+
             xhr.timeout = timeout;
-            const isGet = method === ERequestMethod.GET;
-            xhr.open(method || ERequestMethod.GET, isGet ? `${url}${data}` : url);
+            xhr.open(method || ERestMethod.GET, isGet ? `${url}${data}` : url);
 
             if (headers) {
                 Object.keys(headers).forEach((key) => xhr.setRequestHeader(key, headers[key]));
@@ -80,7 +62,7 @@ class HTTPTransport {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
-            if (method === ERequestMethod.GET || !data) {
+            if (method === ERestMethod.GET || !data) {
                 xhr.send();
             } else {
                 xhr.send(JSON.stringify(data));
@@ -89,4 +71,4 @@ class HTTPTransport {
     };
 }
 
-export default HTTPTransport;
+export default HTTPClient;

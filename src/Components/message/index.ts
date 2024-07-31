@@ -21,7 +21,7 @@ export class Message extends Block<IMessageProps> {
         const { main, content } = message;
 
         return `
-            <li class="message  ${main ? " message-my" : ""}">
+            <li class="message${main ? " message-my" : ""}">
                 <article class="message__text">
                     <p>${content}</p>
                 </article>

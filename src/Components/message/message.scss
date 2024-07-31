@@ -1,5 +1,5 @@
 .message {
-    border: 1px solid var(--gray-0);
+    background-color: var(--gray-2);
     border-radius: 15px;
     height: auto;
     width: auto;
@@ -10,8 +10,8 @@
 
     &.message-my {
         border-radius: 15px 15px 0;
-        background-color: var(--red-light);
-        border: 1px solid var(--red-light);
+        background-color: var(--blue-light);
+        border: 1px solid var(--blue-light);
         float: right;
         max-width: 50%;
         min-width: 200px;
@@ -25,24 +25,8 @@
         }
     }
 
-    .message__file {
-        padding: 11px;
-        width: auto;
-        height: 95%;
-
-        img {
-            object-fit: contain;
-            width: 100%;
-        }
-    }
-
     .message__text {
         padding: 11px;
         background-color: transparent;
-    }
-
-    .message__time {
-        display: flex;
-        justify-content: flex-end;
     }
 }
