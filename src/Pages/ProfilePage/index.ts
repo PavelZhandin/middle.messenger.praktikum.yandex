@@ -1,2 +1,13 @@
-import './index.scss'
-export { default as ProfilePage } from './template.hbs?raw';
+import "./index.scss";
+import pageTemplate from "./template.hbs?raw";
+import Block from "../../Core/Block";
+
+export class ProfilePage extends Block {
+    constructor() {
+        super({ events: {} });
+    }
+
+    protected render(): string {
+        return pageTemplate;
+    }
+}

@@ -10,12 +10,26 @@
     "dev": "vite",
     "start": "vite --port 3000 --host",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "eslint": "eslint . ",
+    "stylelint": "stylelint src/**/*.scss ",
+    "prettier": "npx prettier src test --check",
+    "prettier:fix": "npm run prettier -- --write"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "github:eslint/eslintrc",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "3.3.3",
     "sass": "^1.77.6",
+    "stylelint": "^16.7.0",
+    "stylelint-config-standard": "^36.0.1",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1",
+    "vite": "^5.3.4",
     "vite-plugin-handlebars": "^2.0.0"
   },
   "dependencies": {
