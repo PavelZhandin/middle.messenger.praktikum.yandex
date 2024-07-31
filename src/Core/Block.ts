@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 import Handlebars from "handlebars";
 import EventBus from "./EventBus";
-import { isDeepEqual } from "../Utils/compareFunctions/isDeepEqual";
 
 export interface IProps extends Record<string, unknown> {
     events?: Record<string, unknown>;
@@ -109,10 +108,13 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     }
 
     // protected componentDidUpdate(oldProps: IProps, newProps: IProps): boolean {
-    //     return isDeepEqual(oldProps as Record<string, IProps>, newProps as Record<string, IProps>);
+    //     return isDeepEqual(oldProps as Record<string, IProps>,
+    // newProps as Record<string, IProps>);
     // }
 
     protected componentDidUpdate(_oldProps?: unknown, _newProps?: unknown): boolean {
+        console.log({ _oldProps, _newProps });
+
         return true;
     }
 
@@ -189,10 +191,9 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
         return this.element;
     }
 
-    private makePropsProxy(props: { [index: string | symbol]: unknown }) {
+    private makePropsProxy(props: { [index: string | symbol]: unknown }): any {
         const self = this;
 
-        // private makePropsProxy(props: IProps) {
         return new Proxy(props, {
             get(target, prop) {
                 const value = target[prop];

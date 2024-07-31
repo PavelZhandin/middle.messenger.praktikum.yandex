@@ -23,7 +23,9 @@
   },
   "plugins": ["prettier", "@typescript-eslint", "eslint-plugin-prettier"],
   "rules": {
+    "no-shadow": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-shadow": "off",
     "indent": ["error", 4],
     "consistent-return": "off",
     "class-methods-use-this": "off",

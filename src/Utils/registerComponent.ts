@@ -1,8 +1,7 @@
 /* eslint-disable no-param-reassign */
 import Handlebars, { HelperOptions } from "handlebars";
-import Block from "../Core/Block";
 
-export function registerComponent(name: string, Component: typeof Block) {
+export function registerComponent(name: string, Component: any) {
     if (name in Handlebars.helpers) {
         throw new Error(`The ${name} component is already registered!`);
     }
