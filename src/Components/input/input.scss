@@ -1,19 +1,24 @@
 .input-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 
-  &__input {
-    color: #FFFFFF;
-    height: 34px;
-    width: 100%;
-    border: 1px solid #AAAAAA;
-    border-radius: 10px;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    box-sizing: border-box;
-  }
+    &__input {
+        color: var(--white);
+        height: 34px;
+        width: 100%;
+        border: 1px solid #aaa;
+        border-radius: 10px;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 25%);
+        box-sizing: border-box;
 
-  &__label {
-    font-size: 14px;
-  }
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+
+    &__label {
+        font-size: 14px;
+    }
 }

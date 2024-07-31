@@ -1,4 +1,16 @@
 .button {
-  font-size:  24px;
-  border: 1px dashed darkorange;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 10px;
+    color: var(--white);
+    padding: 7px;
+
+    &:focus {
+        border: none;
+        outline: none;
+    }
+
+    &:hover {
+        background: #4979f1;
+    }
 }
