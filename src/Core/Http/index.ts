@@ -12,6 +12,12 @@ function queryStringify(data: object) {
 }
 
 class HTTPClient {
+    private base: string = "https://ya-praktikum.tech/api/v2";
+
+    constructor(endpoint: string) {
+        this.base = this.base.concat(endpoint);
+    }
+
     get: THttpMethod = (url, options = {}) => {
         return this.request(
             url,
