@@ -1,3 +1,10 @@
-declare type Nullable<T> = T | null;
+import { Router } from "./src/Utils/router";
 
-declare type Optional<T> = T | undefined;
+declare global {
+    interface Window {
+        router: Router;
+    }
+    type Optional<T> = T | undefined;
+
+    declare type Nullable<T> = T | null;
+}

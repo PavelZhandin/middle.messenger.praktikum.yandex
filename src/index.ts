@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import { registerComponent } from "./Utils/registerComponent";
 import * as Components from "./Components";
 import * as Partials from "./Partials";
-import { navigateInitial } from "./Utils/Navigation";
+import { withRouting } from "./Utils/router/useRouter";
 
 const allComponents = {
     Input: Components.Input,
@@ -39,4 +39,4 @@ Handlebars.registerHelper("safeVal", (value, safeValue) => {
     return new Handlebars.SafeString(out);
 });
 
-document.addEventListener("DOMContentLoaded", navigateInitial);
+document.addEventListener("DOMContentLoaded", withRouting);
