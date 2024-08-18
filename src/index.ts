@@ -2,7 +2,12 @@ import Handlebars from "handlebars";
 import { registerComponent } from "./Utils/registerComponent";
 import * as Components from "./Components";
 import * as Partials from "./Partials";
-import { withRouting } from "./Utils/router/useRouter";
+import { router, withRouting } from "./Utils/router/useRouter";
+import { AuthAPI } from "./Core/Api/auth";
+import { ERoutes } from "./Enums/routes";
+import { Store } from "./Core/Store";
+import { TAppState } from "./Models/appState";
+import { STORE_INITIAL_STATE } from "./Core/Store/consts";
 
 const allComponents = {
     Input: Components.Input,
@@ -38,5 +43,21 @@ Handlebars.registerHelper("safeVal", (value, safeValue) => {
 
     return new Handlebars.SafeString(out);
 });
+
+const authAPI = new AuthAPI();
+window.store = new Store<TAppState>(STORE_INITIAL_STATE);
+
+try {
+    const me = (await authAPI.getUser()) as any;
+    if (window.location.pathname === ERoutes.SignUp) {
+        router.go(ERoutes.SignUp);
+    }
+    if (me.reason) {
+        router.go(ERoutes.Home);
+    }
+    window.store.set({ user: me });
+} catch (error) {
+    router.go(ERoutes.Home);
+}
 
 document.addEventListener("DOMContentLoaded", withRouting);

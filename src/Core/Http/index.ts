@@ -11,11 +11,26 @@ function queryStringify(data: object) {
     return result;
 }
 
+function setHeaders(xhr: XMLHttpRequest, headers: object) {
+    Object.entries(headers).forEach(([header, value]) => {
+        xhr.setRequestHeader(header, value);
+    });
+}
+
+interface Options {
+    timeout?: number;
+    data?: object;
+    method?: string;
+    headers?: object;
+    query?: object;
+}
+
 class HTTPClient {
     private base: string = "https://ya-praktikum.tech/api/v2";
 
     constructor(endpoint: string) {
         this.base = this.base.concat(endpoint);
+        console.log(this.base);
     }
 
     get: THttpMethod = (url, options = {}) => {
@@ -30,38 +45,44 @@ class HTTPClient {
         );
     };
 
-    put: THttpMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: ERestMethod.PUT }, options.timeout);
-    };
+    // put: THttpMethod = (url, options = {}) => {
+    //     return this.request(url, { ...options, method: ERestMethod.PUT }, options.timeout);
+    // };
 
-    post: THttpMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: ERestMethod.POST }, options.timeout);
-    };
+    // post: THttpMethod = (url, options = {}) => {
+    //     return this.request(url, { ...options, method: ERestMethod.POST }, options.timeout);
+    // };
 
-    delete: THttpMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: ERestMethod.DELETE }, options.timeout);
-    };
+    post<TResponse>(path: string, options: Options = {}): Promise<TResponse> {
+        return this.request<TResponse>(
+            this.base.concat(path),
+            { ...options, method: ERestMethod.POST },
+            options.timeout,
+        );
+    }
 
-    request = (
+    // delete: THttpMethod = (url, options = {}) => {
+    //     return this.request(url, { ...options, method: ERestMethod.DELETE }, options.timeout);
+    // };
+
+    request<TResponse>(
         url: string,
-        options: TOptionsRequest = { method: ERestMethod.GET },
+        options: Options = { method: ERestMethod.GET },
         timeout = 5000,
-    ) => {
-        const { method, headers, data } = options;
+    ) {
+        const { method, headers = {}, data } = options;
 
-        return new Promise((resolve, reject) => {
+        return new Promise<TResponse>((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             const isGet = method === ERestMethod.GET;
 
             xhr.timeout = timeout;
             xhr.open(method || ERestMethod.GET, isGet ? `${url}${data}` : url);
 
-            if (headers) {
-                Object.keys(headers).forEach((key) => xhr.setRequestHeader(key, headers[key]));
-            }
+            setHeaders(xhr, headers);
 
             xhr.onload = () => {
-                resolve(xhr);
+                resolve(xhr.response);
             };
 
             xhr.onabort = reject;
@@ -74,7 +95,7 @@ class HTTPClient {
                 xhr.send(JSON.stringify(data));
             }
         });
-    };
+    }
 }
 
 export default HTTPClient;
