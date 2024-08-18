@@ -7,6 +7,7 @@ import {
     validatePassword,
     validatePhone,
 } from "../../Utils/validators";
+import { AuthController } from "../../Core/Controllers/auth/authController";
 
 interface IRegisterPageProps {
     validate?: (val: string) => string;
@@ -15,6 +16,8 @@ interface IRegisterPageProps {
 
 export class RegisterPage extends Block {
     constructor(props: IRegisterPageProps) {
+        const authController = new AuthController();
+
         super({
             ...props,
             validate: {
@@ -27,12 +30,24 @@ export class RegisterPage extends Block {
             },
             handleSubmit: (event: SubmitEvent) => {
                 event.preventDefault();
+
                 const login = this.refs.login.value();
                 const password = this.refs.password.value();
                 const firstName = this.refs.first_name.value();
                 const secondName = this.refs.second_name.value();
                 const phone = this.refs.phone.value();
                 const email = this.refs.email.value();
+
+                if (login && firstName && secondName && phone && email && password) {
+                    authController.signup({
+                        login,
+                        password,
+                        first_name: firstName,
+                        second_name: secondName,
+                        phone,
+                        email,
+                    });
+                }
 
                 console.log({
                     firstName,

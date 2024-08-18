@@ -7,7 +7,7 @@ const authAPIInstance = new HTTPClient("/auth");
 
 class AuthAPI {
     public async signup(data: SignupRequest): Promise<SignupResponse> {
-        return authAPIInstance.post("/signup", { data });
+        return authAPIInstance.post("/signup", { data }) as Promise<SignupResponse>;
     }
 
     public async signin(data: LoginRequest): Promise<APIError | void> {
@@ -18,12 +18,12 @@ class AuthAPI {
         throw new Error();
     }
 
-    public async logout(): Promise<void> {
+    public async logout(): Promise<any> {
         return authAPIInstance.post("/logout");
     }
 
     public async getUser(): Promise<IUser> {
-        return authAPIInstance.get("/user");
+        return authAPIInstance.get("/user") as Promise<IUser>;
     }
 }
 
