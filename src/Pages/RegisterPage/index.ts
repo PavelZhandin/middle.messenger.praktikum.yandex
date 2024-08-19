@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import pageTemplate from "./template.hbs?raw";
 import Block from "../../Core/Block";
 import {
@@ -33,25 +34,25 @@ export class RegisterPage extends Block {
 
                 const login = this.refs.login.value();
                 const password = this.refs.password.value();
-                const firstName = this.refs.first_name.value();
-                const secondName = this.refs.second_name.value();
+                const first_name = this.refs.first_name.value();
+                const second_name = this.refs.second_name.value();
                 const phone = this.refs.phone.value();
                 const email = this.refs.email.value();
 
-                if (login && firstName && secondName && phone && email && password) {
+                if (login && first_name && second_name && phone && email && password) {
                     authController.signup({
                         login,
                         password,
-                        first_name: firstName,
-                        second_name: secondName,
+                        first_name,
+                        second_name,
                         phone,
                         email,
                     });
                 }
 
                 console.log({
-                    firstName,
-                    secondName,
+                    first_name,
+                    second_name,
                     login,
                     email,
                     password,
