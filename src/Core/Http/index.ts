@@ -30,7 +30,6 @@ class HTTPClient {
 
     constructor(endpoint: string) {
         this.base = this.base.concat(endpoint);
-        console.log(this.base);
     }
 
     get: THttpMethod = (url, options = {}) => {
@@ -81,8 +80,12 @@ class HTTPClient {
 
             setHeaders(xhr, headers);
 
-            xhr.onload = () => {
-                resolve(xhr.response);
+            xhr.onload = function () {
+                try {
+                    resolve(JSON.parse(xhr.response));
+                } catch (e) {
+                    resolve(this.response);
+                }
             };
 
             xhr.onabort = reject;
@@ -91,7 +94,10 @@ class HTTPClient {
 
             if (method === ERestMethod.GET || !data) {
                 xhr.send();
+            } else if (data instanceof FormData) {
+                xhr.send(data);
             } else {
+                xhr.setRequestHeader("Content-type", "application/json");
                 xhr.send(JSON.stringify(data));
             }
         });
