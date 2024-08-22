@@ -9,7 +9,8 @@ export default class EventBus {
         this.listeners = {};
     }
 
-    on(event: string, callback: (...args: Record<string, unknown>[]) => void) {
+    // on(event: string, callback: (...args: Record<string, unknown>[]) => void) {
+    on(event: string, callback: (...args: any) => void) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -24,7 +25,8 @@ export default class EventBus {
         this.listeners[event] = this.listeners[event].filter((listener) => listener !== callback);
     }
 
-    emit(event: string, ...args: Record<string, unknown>[]) {
+    // emit(event: string, ...args: Record<string, unknown>[]) {
+    emit(event: string, ...args: any) {
         if (!this.listeners[event]) {
             // throw new Error(`Нет события: ${event}`);ret
             return;

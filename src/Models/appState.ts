@@ -6,7 +6,7 @@ export type TAppState = {
     user: Nullable<IUser>;
     chats: Nullable<IChat[]>;
     currentChatId: Nullable<string>;
-    // chatSocket: Nullable<ChatWebsocket>;
+    chatSocket: Nullable<ChatWebsocket>;
     messages: Nullable<IMessage[]>;
     currentChatUsers: Nullable<IUser[]>;
 };
