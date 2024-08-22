@@ -1,3 +1,4 @@
+import { ChatWebsocket } from "../Core/Api/messenger/chat.websocket";
 import { IChat } from "./Chat";
 import { IMessage } from "./IMessage";
 import { IUser } from "./IUser";
