@@ -4,7 +4,7 @@ import { isEqual } from "../../Utils/compareFunctions/isEqual";
 import Block from "../Block";
 
 export function connect(mapStateToProps: (state: TAppState) => Partial<TAppState>) {
-    return function (BlockComponent: typeof Block) {
+    return function (BlockComponent: typeof Block<any>) {
         return class extends BlockComponent {
             private onChangeStoreCallback: () => void;
 

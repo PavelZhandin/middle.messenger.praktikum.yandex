@@ -19,6 +19,7 @@ const allComponents = {
     ChatItem: Components.ChatItem,
     MessageList: Components.MessageList,
     Message: Components.Message,
+    ChatHeader: Components.ChatHeader,
 };
 
 const allPartials = {
@@ -48,14 +49,14 @@ const authAPI = new AuthAPI();
 window.store = new Store<TAppState>(STORE_INITIAL_STATE);
 
 try {
-    // const me = (await authAPI.getUser()) as any;
+    const me = (await authAPI.getUser()) as any;
     if (window.location.pathname === ERoutes.SignUp) {
         router.go(ERoutes.SignUp);
     }
     // if (me.reason) {
     router.go(ERoutes.Home);
     // }
-    // window.store.set({ user: me });
+    window.store.set({ user: me });
 } catch (error) {
     router.go(ERoutes.Home);
 }

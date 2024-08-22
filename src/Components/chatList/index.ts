@@ -1,6 +1,6 @@
 import { IChat } from "../../Models/Chat";
 import { Block, IProps } from "../../Core/Block";
-import { chatList } from "../../Mocks/chatList";
+// import { chatList } from "../../Mocks/chatList";
 import "./index.scss";
 import { ChatAPI } from "../../Core/Api/messenger";
 
@@ -15,20 +15,24 @@ export class ChatList extends Block {
             // chats: chatList,
             handleAddChat: async () => {
                 try {
-                  const chatAPI = new ChatAPI();
-                  const title = this.refs.chatTitle.value();
-                  title && await chatAPI.create(title);
-                  const chats = await chatAPI.getAll();
-                  window.store.set({ chats });
+                    const chatAPI = new ChatAPI();
+                    const title = this.refs.chatTitle.value();
+
+                    if (title) {
+                        await chatAPI.create(title);
+                    }
+
+                    const chats = await chatAPI.getAll();
+                    window.store.set({ chats });
                 } catch (error) {
-                  console.error(error);
+                    console.error(error);
                 }
-              },
+            },
         });
     }
 
     render(): string {
-        return`
+        return `
             <div class="chat-list-container">
                 {{{ BaseButton text="Добавить чат" onClick=handleAddChat }}}
                 <div class="chat-list__chats">

@@ -99,6 +99,8 @@ class HTTPClient {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
+            xhr.withCredentials = true;
+
             if (method === ERestMethod.GET || !data) {
                 xhr.send();
             } else if (data instanceof FormData) {

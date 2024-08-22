@@ -7,3 +7,4 @@ export { ChatList } from "./chatList";
 export { ChatItem } from "./chatItem";
 export { MessageList } from "./messageList";
 export { Message } from "./message";
+export { ChatHeader } from "./chatHeader";

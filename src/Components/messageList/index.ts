@@ -6,7 +6,7 @@ import { validateMessage } from "../../Utils/validators";
 import "./messageList.scss";
 
 interface IMessageListProps extends IProps {
-    messages: IMessage[];
+    // messages: IMessage[];
     currentUser: Partial<IUser>;
     onBlurMessage?: () => void;
     validate?: (val: string) => string;
@@ -18,7 +18,7 @@ export class MessageList extends Block<IMessageListProps> {
     constructor(props: IMessageListProps) {
         super({
             ...props,
-            messages: mockListMessages,
+            // messages: mockListMessages,
             handleSubmit: () => {
                 const message = this.refs?.message?.value();
 
