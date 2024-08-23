@@ -44,11 +44,12 @@ class ChatHeader extends Block<IChatHeaderProps> {
                     </ul>
                 </div>
                 <div>
-                    {{{ InputField 
-                        type="text"
-                        label="id пользователя"
-                        ref="username"
-                        validate=validateIsNotEmpty
+                    {{{ InputValidated 
+                            type="text"
+                            label="id пользователя"
+                            name="username"
+                            ref="username"
+                            validate=validateIsNotEmpty
                     }}}
                     {{{ Button label="Добавить пользователя" onClick=handleAddUserClick }}}
                     {{{ Button label="Удалить пользователя" onClick=handleDeleteUserClick }}}

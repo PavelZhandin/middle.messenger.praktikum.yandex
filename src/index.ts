@@ -31,6 +31,8 @@ const allPartials = {
     ProfileAvatar: Partials.ProfileAvatar,
 };
 
+
+
 Object.entries(allComponents).forEach(([name, component]) => {
     registerComponent(name, component);
 });
@@ -53,12 +55,14 @@ try {
     if (window.location.pathname === ERoutes.SignUp) {
         router.go(ERoutes.SignUp);
     }
-    // if (me.reason) {
+    if (me.reason) {
     router.go(ERoutes.Home);
-    // }
+    }
     window.store.set({ user: me });
 } catch (error) {
     router.go(ERoutes.Home);
 }
 
-document.addEventListener("DOMContentLoaded", withRouting);
+withRouting();
+
+// document.addEventListener("DOMContentLoaded", withRouting);

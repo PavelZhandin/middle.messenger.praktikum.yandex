@@ -15,10 +15,10 @@ export class ChatItem extends Block {
             events: {
                 click: () => {
                     const { id } = props;
+                    console.log(props);
                     window.store.set({ currentChatId: id });
                     const chatAPI = new ChatAPI();
                     chatAPI.initChat(id as string);
-                    console.log("clicked");
                 },
             },
         });

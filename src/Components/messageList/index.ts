@@ -21,8 +21,6 @@ export class MessageList extends Block<IMessageListProps> {
             // messages: mockListMessages,
             handleSubmit: () => {
                 const message = this.refs?.message?.value();
-
-                console.log({ message });
             },
             validate: validateMessage,
         });

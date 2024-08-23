@@ -32,9 +32,6 @@ export class EditPasswordPage extends Block {
                 !passwordsMatch && alert("Пароли не совпадают!");
 
                 if (allValid && passwordsMatch) {
-                    console.log({
-                        newPassword,
-                    });
                     alert("Данные корректны! (Детали в консоли)");
                 }
             },

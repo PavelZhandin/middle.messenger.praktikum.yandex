@@ -113,7 +113,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     // }
 
     protected componentDidUpdate(_oldProps?: unknown, _newProps?: unknown): boolean {
-        console.log({ _oldProps, _newProps });
+        false && console.log({ _oldProps, _newProps });
 
         return true;
     }

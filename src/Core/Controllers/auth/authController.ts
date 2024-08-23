@@ -16,6 +16,7 @@ class AuthController {
         } catch (error) {
             const user = (await authApi.getUser()) as any;
             if (!user.reason) {
+                console.log(user)
                 window.store.set({ user });
                 window.router.go(ERoutes.Messenger);
             }
@@ -26,7 +27,6 @@ class AuthController {
         try {
             const response = (await authApi.signup(data)) as any;
 
-            console.log(response);
             if (!response.reason) {
                 window.router.go(ERoutes.Messenger);
                 const user = await authApi.getUser();
