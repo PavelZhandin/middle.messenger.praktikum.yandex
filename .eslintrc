@@ -23,6 +23,7 @@
   },
   "plugins": ["prettier", "@typescript-eslint", "eslint-plugin-prettier"],
   "rules": {
+    "camelcase": "warn",
     "radix": "off",
     "no-shadow": "off",
     "no-use-before-define": "off",
@@ -45,7 +46,7 @@
     "@typescript-eslint/no-this-alias": "off",
     "no-trailing-spaces": "error",
     "comma-dangle": 0,
-    "max-len": [2, 100],
+    "max-len": [2, 120],
     "max-params": [2, 3],
     "no-console": "off",
     "eol-last": 0,

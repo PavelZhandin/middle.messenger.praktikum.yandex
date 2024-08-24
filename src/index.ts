@@ -20,6 +20,7 @@ const allComponents = {
     MessageList: Components.MessageList,
     Message: Components.Message,
     ChatHeader: Components.ChatHeader,
+    ProfileAvatar: Components.ProfileAvatar,
 };
 
 const allPartials = {
@@ -28,7 +29,6 @@ const allPartials = {
     FormHeader: Partials.FormHeader,
     Link: Partials.Link,
     ProfileProperty: Partials.ProfileProperty,
-    ProfileAvatar: Partials.ProfileAvatar,
 };
 
 Object.entries(allComponents).forEach(([name, component]) => {

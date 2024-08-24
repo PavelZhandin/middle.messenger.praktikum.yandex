@@ -18,7 +18,7 @@ class ChatList extends Block {
                 try {
                     const chatAPI = new ChatAPI();
                     const title = this.refs.chatTitle.value();
-                    console.log(title)
+                    console.log(title);
 
                     if (title) {
                         await chatAPI.create(title);
@@ -36,8 +36,20 @@ class ChatList extends Block {
     render(): string {
         return `
             <div class="chat-list-container">
-                {{{ InputField type="text" ref="chatTitle" name="chatTitle" value="" label="Название чата" }}}
-                {{{ InputValidated type="text" label="Название чата" name="chatTitle" ref="chatTitle" value="" }}}
+                {{{ InputField 
+                    label="Название чата"
+                    type="text"
+                    ref="chatTitle"
+                    name="chatTitle"
+                    value=""
+                }}}
+                {{{ InputValidated
+                    label="Название чата"
+                    type="text"
+                    name="chatTitle"
+                    ref="chatTitle"
+                    value=""
+                }}}
                 {{{ BaseButton text="Добавить чат" onClick=handleAddChat }}}
                 <div class="chat-list__chats">
                     {{#each chats}}

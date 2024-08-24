@@ -3,7 +3,7 @@
         <a href="/profile">Назад</a>
     </div>
     <div class="profile-info">
-        {{> ProfileAvatar }}
+        {{{ ProfileAvatar src="" }}}
         <form action="/messenger" class="properties-container">
             {{{ InputValidated ref="oldPassword" name="oldPassword" type="password" label="Старый пароль" validate=validate.oldPassword }}}
             {{{ InputValidated ref="newPassword" name="newPassword" type="password" label="Новый пароль" validate=validate.newPassword }}}
