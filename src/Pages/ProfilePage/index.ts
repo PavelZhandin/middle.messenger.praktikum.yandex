@@ -59,7 +59,7 @@ class ProfilePage extends Block<ProfilePageProps> {
 
                 <div class="controlButtons-container">
                     <a href="/edit-profile">Изменить данные</a>
-                    <a href="/editpassword">Изменить пароль</a>
+                    <a href="/edit-password">Изменить пароль</a>
                     {{{ BaseButton text="Выйти" className="exit-button" onClick=handleExitClick }}}
                     <a class="exit-button" href="./signin">Выйти</a>
                 </div>

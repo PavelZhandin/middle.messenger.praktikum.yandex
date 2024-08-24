@@ -44,14 +44,6 @@ class EditProfileDataPage extends Block<IEditProfileDataPageProps> {
                         (input) => !!input,
                     )
                 ) {
-                    console.log({
-                        first_name: firstName,
-                        second_name: secondName,
-                        login,
-                        email,
-                        display_name: displayName,
-                        phone,
-                    });
                     userAPI.editUser({
                         first_name: firstName,
                         second_name: secondName,
@@ -69,12 +61,11 @@ class EditProfileDataPage extends Block<IEditProfileDataPageProps> {
     }
 
     protected render(): string {
-        console.log(this.props.user);
-        const { email, login, second_name, display_name, first_name, phone } =
+        const { avatar, email, login, second_name, display_name, first_name, phone } =
             this.props.user || {};
         let avatarSrc = "";
         if (this.props.user !== null) {
-            avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${this.props.user.avatar}"`;
+            avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${avatar}"`;
         }
         return `
                 <div class="profile-container">

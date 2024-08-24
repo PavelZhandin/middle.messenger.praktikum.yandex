@@ -23,6 +23,17 @@ class UserAPI {
             console.error(error);
         }
     }
+
+    public async editPassword(data: any) {
+        try {
+            const response: any = await userAPIInstance.put("/password", {
+                data,
+            });
+            return response;
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 
 export { UserAPI };

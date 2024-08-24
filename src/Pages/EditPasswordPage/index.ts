@@ -1,16 +1,21 @@
 /* eslint-disable no-unused-expressions */
 import "./index.scss";
-import template from "./template.hbs?raw";
 import Block from "../../Core/Block";
 import { validatePassword } from "../../Utils/validators";
+import { UserAPI } from "../../Core/Api/user";
+import { connect } from "../../Core/Store/connect";
+import { IUser } from "../../Models/IUser";
 
-interface IEditPasswordPageProps {
+interface IEditPasswordPageProps extends Record<string, unknown> {
+    user: IUser;
     validate?: (val: string) => string;
     handleSubmit?: () => void;
 }
 
-export class EditPasswordPage extends Block {
+class EditPasswordPage extends Block<IEditPasswordPageProps> {
     constructor(props: IEditPasswordPageProps) {
+        const userAPI = new UserAPI();
+
         super({
             ...props,
             validate: {
@@ -32,6 +37,7 @@ export class EditPasswordPage extends Block {
                 !passwordsMatch && alert("Пароли не совпадают!");
 
                 if (allValid && passwordsMatch) {
+                    userAPI.editPassword({ oldPassword, newPassword });
                     alert("Данные корректны! (Детали в консоли)");
                 }
             },
@@ -39,6 +45,49 @@ export class EditPasswordPage extends Block {
     }
 
     protected render(): string {
-        return template;
+        let avatarSrc = "";
+        if (this.props.user) {
+            avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${this.props.user?.avatar}"`;
+        }
+        return `
+        <div class="editPassword-container">
+            <div class="backButton-container">
+                <a href="/profile">Назад</a>
+            </div>
+            <div class="profile-info">
+                {{{ ProfileAvatar ${avatarSrc} }}}
+                <form action="/messenger" class="properties-container">
+                    {{{ InputValidated 
+                        ref="oldPassword"
+                        name="oldPassword"
+                        type="password"
+                        label="Старый пароль"
+                        validate=validate.oldPassword
+                        value=""
+                    }}}
+                    {{{ InputValidated
+                        ref="newPassword"
+                        name="newPassword"
+                        type="password"
+                        label="Новый пароль"
+                        validate=validate.newPassword
+                    }}}
+                    {{{ InputValidated
+                        ref="newPasswordRepeat"
+                        name="newPasswordRepeat"
+                        type="password" label="Новый пароль"
+                        validate=validate.newPassword
+                    }}}
+
+                    <div class="controlButtons-container">
+                        {{{ BaseButton className="submit-button" text="Сохранить" onClick=handleSubmit }}}
+                    </div>
+                </form>
+            </div>
+        </div>
+        `;
     }
 }
+
+const EditPasswordPageWithStore = connect(({ user }) => ({ user }))(EditPasswordPage);
+export { EditPasswordPageWithStore as EditPasswordPage };
