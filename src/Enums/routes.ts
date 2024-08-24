@@ -4,5 +4,5 @@ export enum ERoutes {
     Messenger = "/messenger",
     Profile = "/profile",
     SignIn = "/signin",
-    ProfileEdit = "/settings",
+    ProfileEdit = "/edit-profile",
 }

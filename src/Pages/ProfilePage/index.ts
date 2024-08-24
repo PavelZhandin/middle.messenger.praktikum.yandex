@@ -31,8 +31,6 @@ class ProfilePage extends Block<ProfilePageProps> {
 
     protected render(): string {
         let avatarSrc = "";
-        console.log(this.props);
-        console.log(this.props?.user);
         const { avatar, email, login, first_name, second_name, display_name, phone } =
             this.props?.user || {};
 
@@ -60,7 +58,7 @@ class ProfilePage extends Block<ProfilePageProps> {
                 </div>
 
                 <div class="controlButtons-container">
-                    <a href="/editprofile">Изменить данные</a>
+                    <a href="/edit-profile">Изменить данные</a>
                     <a href="/editpassword">Изменить пароль</a>
                     {{{ BaseButton text="Выйти" className="exit-button" onClick=handleExitClick }}}
                     <a class="exit-button" href="./signin">Выйти</a>

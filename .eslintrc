@@ -46,7 +46,7 @@
     "@typescript-eslint/no-this-alias": "off",
     "no-trailing-spaces": "error",
     "comma-dangle": 0,
-    "max-len": [2, 120],
+    "max-len": [2, 140],
     "max-params": [2, 3],
     "no-console": "off",
     "eol-last": 0,
