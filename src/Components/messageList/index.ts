@@ -1,6 +1,7 @@
 import Block, { IProps } from "../../Core/Block";
-import { mockListMessages } from "../../Mocks/messageList";
-import { IMessage } from "../../Models/IMessage";
+import { connect } from "../../Core/Store/connect";
+// import { mockListMessages } from "../../Mocks/messageList";
+// import { IMessage } from "../../Models/IMessage";
 import { IUser } from "../../Models/IUser";
 import { validateMessage } from "../../Utils/validators";
 import "./messageList.scss";
@@ -14,13 +15,15 @@ interface IMessageListProps extends IProps {
     handleSubmit?: () => void;
 }
 
-export class MessageList extends Block<IMessageListProps> {
+class MessageList extends Block<IMessageListProps> {
     constructor(props: IMessageListProps) {
         super({
             ...props,
             // messages: mockListMessages,
             handleSubmit: () => {
                 const message = this.refs?.message?.value();
+
+                console.log(message);
             },
             validate: validateMessage,
         });
@@ -57,3 +60,9 @@ export class MessageList extends Block<IMessageListProps> {
             `;
     }
 }
+
+const MessageListWithStore = connect(({ currentChatId, messages }) => ({
+    currentChatId,
+    messages,
+}))(MessageList);
+export { MessageListWithStore as MessageList };

@@ -31,8 +31,6 @@ const allPartials = {
     ProfileAvatar: Partials.ProfileAvatar,
 };
 
-
-
 Object.entries(allComponents).forEach(([name, component]) => {
     registerComponent(name, component);
 });
@@ -56,7 +54,7 @@ try {
         router.go(ERoutes.SignUp);
     }
     if (me.reason) {
-    router.go(ERoutes.Home);
+        router.go(ERoutes.Home);
     }
     window.store.set({ user: me });
 } catch (error) {

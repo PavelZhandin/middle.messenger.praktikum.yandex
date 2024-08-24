@@ -51,11 +51,11 @@ class ChatHeader extends Block<IChatHeaderProps> {
                             ref="username"
                             validate=validateIsNotEmpty
                     }}}
-                    {{{ Button label="Добавить пользователя" onClick=handleAddUserClick }}}
-                    {{{ Button label="Удалить пользователя" onClick=handleDeleteUserClick }}}
+                    {{{ BaseButton text="Добавить пользователя" onClick=handleAddUserClick }}}
+                    {{{ BaseButton text="Удалить пользователя" onClick=handleDeleteUserClick }}}
                 </div>
                 <div>
-                    {{{ Button label="Удалить чат" onClick=handleDeleteChatClick }}}
+                    {{{ BaseButton text="Удалить чат" onClick=handleDeleteChatClick }}}
                 </div>
                 </div>
       `;
@@ -68,4 +68,5 @@ const ChatHeaderWithStore = connect(({ currentChatId, currentChatUsers }) => ({
     currentChatId,
     currentChatUsers,
 }))(ChatHeader);
+
 export { ChatHeaderWithStore };
