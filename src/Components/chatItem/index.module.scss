@@ -16,10 +16,6 @@
     width: 47px;
 }
 
-.userImageContainer {
-    width: 47px;
-}
-
 .messageContainer {
     flex-grow: 1;
 }
@@ -31,7 +27,7 @@
 }
 
 .message {
-    color: #888888;
+    color: var(--gray-0);
     overflow: hidden;
     text-overflow: ellipsis;
     max-height: 40px;
@@ -41,7 +37,7 @@
     position: absolute;
     top: 12px;
     right: 10px;
-    color: #888888;
+    color: var(--gray-0);
 }
 
 .newMessages {
