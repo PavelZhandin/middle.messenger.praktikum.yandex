@@ -21,13 +21,13 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
 
     protected props: Props;
 
-    protected _element: Nullable<HTMLElement> = null;
+    protected _element: HTMLElement;
 
     private eventBus: () => EventBus;
 
     private children: Record<string, Block> = {};
 
-    protected refs: Record<string, Block> = {};
+    protected refs: Record<string, Block | any> = {};
 
     constructor(propsWithChildren: IProps) {
         const eventBus = new EventBus();
@@ -113,7 +113,9 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     // newProps as Record<string, IProps>);
     // }
 
-    protected componentDidUpdate(): boolean {
+    protected componentDidUpdate(_oldProps?: unknown, _newProps?: unknown): boolean {
+        false && console.log({ _oldProps, _newProps });
+
         return true;
     }
 
@@ -210,6 +212,14 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
                 throw new Error("Нет доступа");
             },
         });
+    }
+
+    public hide() {
+        this.getContent().style.display = "none";
+    }
+
+    public show() {
+        this.getContent().style.display = "flex";
     }
 }
 
