@@ -1,0 +1,58 @@
+.chatItem {
+    position: relative;
+    border-bottom: 1px solid var(--gray-light);
+    height: 80px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: 1px solid #eaeaea;
+    gap: 10px;
+    max-height: 70px;
+    padding: 12px 10px;
+}
+
+.userImageContainer {
+    width: 47px;
+}
+
+.userImageContainer {
+    width: 47px;
+}
+
+.messageContainer {
+    flex-grow: 1;
+}
+
+.title {
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.message {
+    color: #888888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 40px;
+}
+
+.time {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    color: #888888;
+}
+
+.newMessages {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    border-radius: 50%;
+    background-color: var(--blue);
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    color: var(--white);
+    text-align: center;
+}

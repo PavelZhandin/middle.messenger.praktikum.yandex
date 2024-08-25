@@ -49,11 +49,11 @@ const authAPI = new AuthAPI();
 window.store = new Store<TAppState>(STORE_INITIAL_STATE);
 
 try {
+    const currentRoute = window.location.pathname;
     const me = (await authAPI.getUser()) as any;
-    if (window.location.pathname === ERoutes.SignUp) {
+    if (currentRoute === ERoutes.SignUp) {
         router.go(ERoutes.SignUp);
-    }
-    if (me.reason) {
+    } else if (me.reason) {
         router.go(ERoutes.Home);
     }
     window.store.set({ user: me });

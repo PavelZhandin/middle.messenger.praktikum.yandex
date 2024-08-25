@@ -1,5 +1,37 @@
 .chatHeader {
-  display: flex;
-  height: 60px;
-  justify-content: space-between;
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+
+    h3 {
+        margin-top: 0;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0px;
+    }
+
+    input {
+        margin-bottom: 20px;
+        border: none;
+        background-color: var(--gray-1);
+        border-radius: 18px;
+        padding: 10px 20px;
+
+        ~ label {
+            display: none;
+        }
+    }
+
+    .delete_btn {
+        background-color: var(--red);
+    }
+}
+
+.empty_filler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
 }

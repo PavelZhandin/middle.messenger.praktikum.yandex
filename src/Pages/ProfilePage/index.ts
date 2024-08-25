@@ -61,7 +61,6 @@ class ProfilePage extends Block<ProfilePageProps> {
                     <a href="/edit-profile">Изменить данные</a>
                     <a href="/edit-password">Изменить пароль</a>
                     {{{ BaseButton text="Выйти" className="exit-button" onClick=handleExitClick }}}
-                    <a class="exit-button" href="./signin">Выйти</a>
                 </div>
             </div>
         </div>

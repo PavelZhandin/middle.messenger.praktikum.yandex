@@ -23,6 +23,7 @@
   },
   "plugins": ["prettier", "@typescript-eslint", "eslint-plugin-prettier"],
   "rules": {
+    "no-unused-expressions": "off",
     "camelcase": "warn",
     "radix": "off",
     "no-shadow": "off",

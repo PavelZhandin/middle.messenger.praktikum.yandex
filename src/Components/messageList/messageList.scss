@@ -1,7 +1,6 @@
 .message-list {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    height: 100vh;
     width: 100%;
     padding: 10px;
 
@@ -30,7 +29,8 @@
         overflow-y: auto;
         padding: 20px 0;
         margin-bottom: 20px;
-        height: 100%;
+        flex: 1;
+        min-height: calc(100vh - 220px);
         list-style-type: none;
 
         .message-list__main__message {
@@ -39,20 +39,25 @@
     }
 
     .message-list__footer {
-        max-height: 200px;
-        padding-top: 10px;
-        border-top: 1px solid var(--gray-light);
+        width: 100%;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-height: 200px;
+        gap: 15px;
 
-        button {
-            min-width: 200px;
+        & > div {
+            width: 100%;
         }
-
         .message-input {
             border: none;
             background-color: var(--gray-1);
             border-radius: 18px;
             padding: 10px 20px;
+
+            ~ label {
+                display: none;
+            }
 
             &::placeholder {
                 color: var(--gray-0);
@@ -61,6 +66,10 @@
             &:focus {
                 outline: none;
             }
+        }
+
+        .footer_button {
+            min-width: 200px;
         }
     }
 }

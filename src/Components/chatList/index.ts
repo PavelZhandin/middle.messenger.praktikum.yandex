@@ -1,6 +1,5 @@
 import { IChat } from "../../Models/Chat";
 import { Block, IProps } from "../../Core/Block";
-// import { chatList } from "../../Mocks/chatList";
 import "./index.scss";
 import { ChatAPI } from "../../Core/Api/messenger";
 import { connect } from "../../Core/Store/connect";
@@ -13,7 +12,6 @@ class ChatList extends Block {
     constructor(props: IChatListProps) {
         super({
             ...props,
-            // chats: chatList,
             handleAddChat: async () => {
                 try {
                     const chatAPI = new ChatAPI();
@@ -35,25 +33,25 @@ class ChatList extends Block {
 
     render(): string {
         return `
-            <div class="chat-list-container">
-                {{{ InputField 
-                    label="Название чата"
-                    type="text"
-                    ref="chatTitle"
-                    name="chatTitle"
-                    value=""
-                }}}
-                {{{ InputValidated
-                    label="Название чата"
-                    type="text"
-                    name="chatTitle"
-                    ref="chatTitle"
-                    value=""
-                }}}
-                {{{ BaseButton text="Добавить чат" onClick=handleAddChat }}}
+            <div class="chat-list__container">
+                <div class="chat-list__controls">
+                    {{{ InputValidated
+                        label="Название чата"
+                        type="text"
+                        name="chatTitle"
+                        ref="chatTitle"
+                        value=""
+                    }}}
+                    {{{ BaseButton text="Добавить чат" onClick=handleAddChat }}}
+                </div>
                 <div class="chat-list__chats">
                     {{#each chats}}
-                        {{{ ChatItem id=id title=title message=last_message date=date }}}
+                        {{{ ChatItem 
+                            id=id 
+                            title=title 
+                            last_message=last_message 
+                            unread_count=unread_count 
+                        }}}
                     {{/each}}
                 </div>
             </div>
@@ -61,5 +59,5 @@ class ChatList extends Block {
     }
 }
 
-const ChatPageWithStore = connect(({ chats }) => ({ chats }))(ChatList);
+const ChatPageWithStore = connect(({ chats, user }) => ({ chats, user }))(ChatList);
 export { ChatPageWithStore as ChatList };

@@ -22,10 +22,18 @@ class ChatHeader extends Block<IChatHeaderProps> {
             },
             handleDeleteUserClick: () => {
                 const userId = this.refs.username.value();
-                chatAPI.deleteUser(props.currentChatId as string, userId || "");
+                const { currentChatId } = props;
+
+                if (currentChatId && userId) {
+                    chatAPI.deleteUser(currentChatId, userId);
+                }
             },
             handleDeleteChatClick: () => {
-                chatAPI.deleteChat(props.currentChatId as string);
+                const { currentChatId } = props;
+
+                if (currentChatId) {
+                    chatAPI.deleteChat(currentChatId);
+                }
             },
         });
     }
@@ -34,33 +42,38 @@ class ChatHeader extends Block<IChatHeaderProps> {
         const { currentChatId, currentChatUsers } = this.props;
 
         if (currentChatId && currentChatUsers) {
-            const users = currentChatUsers.map((user: IUser) => `<li>${user.login}</li>`);
             return `
                 <div class="${styles.chatHeader}">
-                <div>
-                    <h3>Список пользователей</h3>
-                    <ul>
-                    ${users}
-                    </ul>
-                </div>
-                <div>
-                    {{{ InputValidated 
-                            type="text"
-                            label="id пользователя"
-                            name="username"
-                            ref="username"
-                            validate=validateIsNotEmpty
-                    }}}
-                    {{{ BaseButton text="Добавить пользователя" onClick=handleAddUserClick }}}
-                    {{{ BaseButton text="Удалить пользователя" onClick=handleDeleteUserClick }}}
-                </div>
-                <div>
-                    {{{ BaseButton text="Удалить чат" onClick=handleDeleteChatClick }}}
-                </div>
+                    <div>
+                        <h3>Список пользователей</h3>
+                        <ul>
+                            {{#each currentChatUsers}}
+                                <li>{{ this.login }}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div>
+                        {{{ InputValidated
+                                placeholder="id пользователя"
+                                type="text"
+                                label="id пользователя"
+                                name="username"
+                                ref="username"
+                                validate=validateIsNotEmpty
+                        }}}
+                        {{{ BaseButton text="Добавить пользователя" onClick=handleAddUserClick }}}
+                        {{{ BaseButton text="Удалить пользователя" onClick=handleDeleteUserClick }}}
+                    </div>
+                    <div>
+                        {{{ BaseButton className="${styles.delete_btn}" text="Удалить чат" onClick=handleDeleteChatClick }}}
+                    </div>
                 </div>
       `;
         }
-        return "<span></span>";
+        return `
+            <div class="${styles.empty_filler}">
+                <h3>Выберите чат из списка или создайте новый</h3>
+            </div>`;
     }
 }
 

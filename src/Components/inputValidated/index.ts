@@ -41,7 +41,7 @@ export class InputValidated extends Block<any> {
     }
 
     protected render(): string {
-        const { name, label, type, value = "", className = "" } = this.props;
+        const { name, label, type, value = "", className = "", placeholder = "" } = this.props;
         return `
       <div class="inputField">
         {{{ Input
@@ -52,6 +52,7 @@ export class InputValidated extends Block<any> {
           className="${className}"
           ref="input"
           onBlur=onBlur
+          placeholder="${placeholder}"
         }}}
         <label for="${name}">
           ${label}
