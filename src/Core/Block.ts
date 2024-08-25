@@ -27,7 +27,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
 
     private children: Record<string, Block> = {};
 
-    protected refs: Record<string, Block> = {};
+    protected refs: Record<string, Block | any> = {};
 
     constructor(propsWithChildren: IProps) {
         const eventBus = new EventBus();

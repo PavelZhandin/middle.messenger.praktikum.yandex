@@ -72,7 +72,7 @@ export class ChatAPI {
         }
     }
 
-    public async deleteUser(chatId: string, userId: string) {
+    public async deleteUser(chatId: string, userId: number) {
         const { user } = window.store.getState();
         if (user?.id === userId) {
             return;
@@ -80,7 +80,7 @@ export class ChatAPI {
         try {
             const response = await chatAPIInstance.delete("/users", {
                 data: {
-                    users: [parseInt(userId)],
+                    users: [userId],
                     chatId: parseInt(chatId),
                 },
             });
