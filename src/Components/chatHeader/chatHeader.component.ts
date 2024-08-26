@@ -17,7 +17,6 @@ class ChatHeader extends Block<IChatHeaderProps> {
             ...props,
             handleAddUserClick: () => {
                 const userId = this.refs.username.value();
-
                 chatAPI.addUser(props.currentChatId as string, userId || "");
             },
             handleDeleteUserClick: () => {
@@ -47,8 +46,8 @@ class ChatHeader extends Block<IChatHeaderProps> {
                     <div>
                         <h3>Список пользователей</h3>
                         <ul>
-                            {{#each currentChatUsers}}
-                                <li>{{ this.login }}</li>
+                            {{#each currentChatUsers }}
+                                <li>{{ this.login }} ( id={{ this.id }})</li>
                             {{/each}}
                         </ul>
                     </div>

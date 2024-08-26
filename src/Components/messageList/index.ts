@@ -18,7 +18,8 @@ class MessageList extends Block<IMessageListProps> {
     constructor(props: IMessageListProps) {
         super({
             ...props,
-            handleSubmit: () => {
+            handleSubmit: (event: SubmitEvent) => {
+                event.preventDefault();
                 const message = this.refs?.message?.value();
                 const { chatSocket } = window.store.getState();
                 if (message === "") {
@@ -44,7 +45,7 @@ class MessageList extends Block<IMessageListProps> {
                             </div>
                         {{/each}}
                     </ul>
-                        <form class="message-list__footer">
+                        <form class="message-list__footer" onsubmit="event.preventDefault()">
                             {{{ InputValidated
                                 ref="message"
                                 name="message"

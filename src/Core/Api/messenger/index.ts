@@ -34,13 +34,14 @@ export class ChatAPI {
 
     public async initChat(id: string) {
         try {
+            const { user } = window.store.getState();
+            this.getUsers(id);
             const { chatSocket } = window.store.getState();
 
             if (chatSocket !== null) {
                 chatSocket.close();
             }
 
-            const { user } = window.store.getState();
             const { token } = await this.getToken(id);
             const wsClient = new ChatWebsocket(
                 `wss://ya-praktikum.tech/ws/chats/${user?.id}/${id}/${token}`,
@@ -50,7 +51,6 @@ export class ChatAPI {
 
             await wsClient.connect();
             wsClient.getMessages("0");
-            this.getUsers(id);
         } catch (error) {
             console.error(error);
         }
