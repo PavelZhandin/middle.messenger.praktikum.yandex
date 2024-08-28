@@ -17,11 +17,14 @@ export class Message extends Block<IMessageProps> {
     public renderForList = this.render;
 
     protected render(): string {
+        const userId = window.store.getState().user?.id;
+
         const { message } = this.props;
-        const { main, content } = message;
+        const isMine = message.user_id === userId;
+        const { content } = message;
 
         return `
-            <li class="message${main ? " message-my" : ""}">
+            <li class="message${isMine ? " message-my" : ""}">
                 <article class="message__text">
                     <p>${content}</p>
                 </article>

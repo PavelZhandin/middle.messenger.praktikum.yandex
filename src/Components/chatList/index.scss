@@ -5,7 +5,23 @@
     flex: 1;
 }
 
-.chat-list-container {
+.chat-list__container {
+    .chat-list__controls {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        input {
+            border: none;
+            background-color: var(--gray-1);
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+
     .chat-list__chats {
         max-height: calc(100vh - 100px);
         padding-left: 0;

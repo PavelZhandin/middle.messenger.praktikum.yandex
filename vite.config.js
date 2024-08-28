@@ -7,6 +7,7 @@ export default defineConfig({
     root: resolve(__dirname, "src"),
     build: {
         outDir: resolve(__dirname, "dist"),
+        target: "esnext",
     },
     rollupOptions: {
         input: {
