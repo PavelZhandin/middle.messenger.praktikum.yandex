@@ -32,3 +32,7 @@ export function validateMessage(message: string): string {
     if (message.length === 0) return `Сообщение должно содержать хотя бы один символ`;
     return "";
 }
+
+export function validateIsNotEmpty(value: string): string {
+    return /^\d+$/.test(value) ? "" : "Значение должно быть числом не должно быть пустым";
+}

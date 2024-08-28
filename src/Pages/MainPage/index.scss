@@ -7,7 +7,7 @@
     .sidebar {
         display: flex;
         flex-direction: column;
-        min-width: 300px;
+        min-width: 330px;
         padding: 10px;
         border-right: 2px solid #eaeaea;
 
@@ -30,6 +30,7 @@
     .currentChat {
         display: flex;
         flex-direction: column;
+        min-height: 90vh;
         width: 100%;
         padding: 20px;
         border: 2px solid #eaeaea;

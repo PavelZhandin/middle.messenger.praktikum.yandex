@@ -2,7 +2,12 @@ import Handlebars from "handlebars";
 import { registerComponent } from "./Utils/registerComponent";
 import * as Components from "./Components";
 import * as Partials from "./Partials";
-import { navigateInitial } from "./Utils/Navigation";
+import { router, withRouting } from "./Utils/router/useRouter";
+import { AuthAPI } from "./Core/Api/auth";
+import { ERoutes } from "./Enums/routes";
+import { Store } from "./Core/Store";
+import { TAppState } from "./Models/appState";
+import { STORE_INITIAL_STATE } from "./Core/Store/consts";
 
 const allComponents = {
     Input: Components.Input,
@@ -14,6 +19,8 @@ const allComponents = {
     ChatItem: Components.ChatItem,
     MessageList: Components.MessageList,
     Message: Components.Message,
+    ChatHeader: Components.ChatHeader,
+    ProfileAvatar: Components.ProfileAvatar,
 };
 
 const allPartials = {
@@ -22,7 +29,6 @@ const allPartials = {
     FormHeader: Partials.FormHeader,
     Link: Partials.Link,
     ProfileProperty: Partials.ProfileProperty,
-    ProfileAvatar: Partials.ProfileAvatar,
 };
 
 Object.entries(allComponents).forEach(([name, component]) => {
@@ -39,4 +45,22 @@ Handlebars.registerHelper("safeVal", (value, safeValue) => {
     return new Handlebars.SafeString(out);
 });
 
-document.addEventListener("DOMContentLoaded", navigateInitial);
+const authAPI = new AuthAPI();
+window.store = new Store<TAppState>(STORE_INITIAL_STATE);
+
+try {
+    const currentRoute = window.location.pathname;
+    const me = (await authAPI.getUser()) as any;
+    if (currentRoute === ERoutes.SignUp) {
+        router.go(ERoutes.SignUp);
+    } else if (me.reason) {
+        router.go(ERoutes.Home);
+    }
+    window.store.set({ user: me });
+} catch (error) {
+    router.go(ERoutes.Home);
+}
+
+withRouting();
+
+// document.addEventListener("DOMContentLoaded", withRouting);
