@@ -1,6 +1,7 @@
 {
-  "extension": ["ts"],
-  "loader": ["ts-node/esm"],
-  "spec": "src/**/*.test.ts",
-  "require": "./mochaSetup.js"
+    "$shcema": "https://json.schemastore.org/mocharc",
+    "extension": ["ts"],
+    "loader": ["ts-node/esm"],
+    "spec": "src/**/*.spec.ts",
+    "require": ["./mochaSetup.js"]
 }

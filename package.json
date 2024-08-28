@@ -1,47 +1,49 @@
 {
-  "name": "messenger_app",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "engines": {
-    "node": "20.11.0"
-  },
-  "scripts": {
-    "dev": "vite",
-    "start": "vite --port 3000 --host",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "eslint": "eslint . ",
-    "test": "mocha",
-    "stylelint": "stylelint src/**/*.scss ",
-    "prettier": "npx prettier src test --check",
-    "prettier:fix": "npm run prettier -- --write"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "github:eslint/eslintrc",
-    "@types/chai": "^4.3.19",
-    "@types/mocha": "^10.0.7",
-    "@types/sinon": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
-    "chai": "^5.1.1",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "jsdom": "^25.0.0",
-    "mocha": "^10.7.3",
-    "prettier": "3.3.3",
-    "sass": "^1.77.6",
-    "sinon": "^18.0.0",
-    "stylelint": "^16.7.0",
-    "stylelint-config-standard": "^36.0.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.3.4",
-    "vite-plugin-handlebars": "^2.0.0"
-  },
-  "dependencies": {
-    "handlebars": "^4.7.8"
-  }
+    "name": "messenger_app",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "engines": {
+        "node": "20.11.0"
+    },
+    "scripts": {
+        "dev": "vite",
+        "start": "vite --port 3000 --host",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "eslint": "eslint . ",
+        "test": "mocha",
+        "stylelint": "stylelint src/**/*.scss ",
+        "prettier": "npx prettier src test --check",
+        "prettier:fix": "npm run prettier -- --write"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "github:eslint/eslintrc",
+        "@types/chai": "^4.3.19",
+        "@types/mocha": "^10.0.7",
+        "@types/sinon": "^17.0.3",
+        "@types/sinon-chai": "^3.2.12",
+        "@typescript-eslint/eslint-plugin": "^7.16.1",
+        "@typescript-eslint/parser": "^7.16.1",
+        "chai": "^5.1.1",
+        "eslint": "^8.57.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "jsdom": "^25.0.0",
+        "mocha": "^10.7.3",
+        "prettier": "3.3.3",
+        "sass": "^1.77.6",
+        "sinon": "^18.0.0",
+        "sinon-chai": "^4.0.0",
+        "stylelint": "^16.7.0",
+        "stylelint-config-standard": "^36.0.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.2.2",
+        "vite": "^5.3.4",
+        "vite-plugin-handlebars": "^2.0.0"
+    },
+    "dependencies": {
+        "handlebars": "^4.7.8"
+    }
 }

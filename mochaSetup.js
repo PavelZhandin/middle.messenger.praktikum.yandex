@@ -1,18 +1,15 @@
-import { JSDOM } from 'jsdom';
-import { describe, it } from 'mocha';
+import { JSDOM } from "jsdom";
+import { describe, it } from "mocha";
 
-// jsdom
-const jsdom = new JSDOM(`<body>
-<div id="app"></div>
-</body>`, {
-    url: "https://example.org/",
-    referrer: "https://example.com/",
-    contentType: "text/html",
-    includeNodeLocations: true,
-    storageQuota: 10000000,
+const jsdom = new JSDOM("<body></body>", {
+    url: "https://example.org",
 });
+
 global.window = jsdom.window;
 global.document = jsdom.window.document;
+global.FormData = jsdom.window.FormData;
+global.MouseEvent = jsdom.window.MouseEvent;
+global.XMLHttpRequest = jsdom.window.XMLHttpRequest;
 
 // mocha
 global.describe = describe;
