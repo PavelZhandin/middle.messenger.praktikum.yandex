@@ -18,10 +18,10 @@ describe("Block", () => {
 
         public render(): string {
             return `
-            <div>
-            <span id="test-id">{{text}}</span>
-            <button>{{text-button}}</button>
-            </div>
+                <div>
+                <span id="test-id">{{text}}</span>
+                <button>{{text-button}}</button>
+                </div>
             `;
         }
     }

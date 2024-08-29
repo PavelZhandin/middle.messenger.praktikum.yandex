@@ -7,6 +7,8 @@ import {
     SignInPage,
     RegisterPage,
     EditPasswordPage,
+    NotFoundPage,
+    ServerErrorPage,
 } from "../../Pages";
 
 const rootQuery = "#app";
@@ -18,7 +20,9 @@ router
     .use(ERoutes.PasswordEdit, EditPasswordPage)
     .use(ERoutes.SignUp, RegisterPage)
     .use(ERoutes.SignIn, SignInPage)
-    .use(ERoutes.Messenger, MainPage);
+    .use(ERoutes.Messenger, MainPage)
+    .use(ERoutes.ServerErrorPage, ServerErrorPage)
+    .use(ERoutes.NotFoundPage, NotFoundPage);
 
 function withRouting() {
     window.router = router;
