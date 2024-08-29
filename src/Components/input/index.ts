@@ -27,7 +27,7 @@ export class Input extends Block<IInputProps> {
     }
 
     protected render(): string {
-        const { className, placeholder, ref, value, name, type } = this.props;
+        const { className, placeholder, ref, value, name, type } = this._props;
 
         return `
             <input
