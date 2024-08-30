@@ -38,7 +38,7 @@ class ChatHeader extends Block<IChatHeaderProps> {
     }
 
     protected render() {
-        const { currentChatId, currentChatUsers } = this.props;
+        const { currentChatId, currentChatUsers } = this._props;
 
         if (currentChatId && currentChatUsers) {
             return `

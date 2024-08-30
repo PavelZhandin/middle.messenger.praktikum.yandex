@@ -16,7 +16,13 @@
         "strictNullChecks": true,
         "noUnusedParameters": true,
         "noUnusedLocals": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true
     },
-    "include": ["src", "**/*.d.ts"]
+    "include": ["src", "**/*.d.ts"],
+    "ts-node": {
+        "esm": true,
+        "experimentalSpecifierResolution": "node",
+        "transpileOnly": true
+    }
 }

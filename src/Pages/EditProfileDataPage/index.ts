@@ -62,9 +62,9 @@ class EditProfileDataPage extends Block<IEditProfileDataPageProps> {
 
     protected render(): string {
         const { avatar, email, login, second_name, display_name, first_name, phone } =
-            this.props.user || {};
+            this._props.user || {};
         let avatarSrc = "";
-        if (this.props.user !== null) {
+        if (this._props.user !== null) {
             avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${avatar}"`;
         }
         return `

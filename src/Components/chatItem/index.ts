@@ -33,7 +33,7 @@ export class ChatItem extends Block<IChatListProps> {
         // const { chats } = window.store.getState();
         let avatarSrc = "";
         let formattedTime;
-        const { user, time } = this.props?.last_message || {};
+        const { user, time } = this._props?.last_message || {};
         const formatter = new Intl.DateTimeFormat("en-US", {
             hour: "2-digit",
             minute: "2-digit",

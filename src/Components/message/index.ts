@@ -19,7 +19,7 @@ export class Message extends Block<IMessageProps> {
     protected render(): string {
         const userId = window.store.getState().user?.id;
 
-        const { message } = this.props;
+        const { message } = this._props;
         const isMine = message.user_id === userId;
         const { content } = message;
 
