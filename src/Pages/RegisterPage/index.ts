@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import pageTemplate from "./template.hbs?raw";
 import Block from "../../Core/Block";
 import {
     validateEmail,
@@ -49,15 +48,6 @@ export class RegisterPage extends Block {
                         email,
                     });
                 }
-
-                console.log({
-                    first_name,
-                    second_name,
-                    login,
-                    email,
-                    password,
-                    phone,
-                });
             },
         });
     }
@@ -74,7 +64,13 @@ export class RegisterPage extends Block {
         {{{ InputValidated ref="phone" name="phone" type="phone" label="Телефон" validate=validate.phone }}}
         {{{ InputValidated ref="login" name="login" type="text" label="Логин" validate=validate.login }}}
         {{{ InputValidated ref="password" name="password" type="password" label="Пароль" validate=validate.password }}}
-        {{{ InputValidated ref="repeat_password" name="repeat_password" type="password" label="Пароль (ещё раз)" validate=validate.password_repeat }}}
+        {{{ InputValidated 
+            ref="repeat_password"
+            name="repeat_password"
+            type="password"
+            label="Пароль (ещё раз)"
+            validate=validate.password_repeat
+        }}}
     </div>
     <div class="form-footer">
         {{{ BaseButton className="submit-button" text="Зарегистрироваться" onClick=handleSubmit }}}

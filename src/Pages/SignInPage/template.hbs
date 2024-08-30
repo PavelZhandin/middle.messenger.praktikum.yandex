@@ -1,6 +1,6 @@
 {{#> AuthFormContainer}}
 <form action="/messenger" class="form">
-    {{> FormHeader label='Войти'}}
+    {{> FormHeader label='Войти' }}
     <div class="inputContainer">
         {{{ InputValidated ref="login" name="login" type="text" label="Логин" validate=validate.login }}}
         {{{ InputValidated ref="password" name="password" type="password" label="Пароль" validate=validate.password }}}
@@ -10,4 +10,4 @@
         {{> Link label='Нет аккаунта?' href='/signup' }}
     </div>
 </form>
-{{/ AuthFormContainer}}
+{{/AuthFormContainer}}
