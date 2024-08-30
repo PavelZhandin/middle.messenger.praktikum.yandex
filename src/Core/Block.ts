@@ -19,7 +19,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
 
     public id = Math.floor(Math.random() * 100);
 
-    protected props: Props;
+    protected _props: Props;
 
     protected _element: HTMLElement;
 
@@ -35,7 +35,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
         const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
         this.children = children;
-        this.props = this.makePropsProxy(props);
+        this._props = this.makePropsProxy(props);
         this.eventBus = () => eventBus;
         this._registerEvents();
         eventBus.emit(Block.EVENTS.INIT);
@@ -57,7 +57,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     }
 
     private _addEvents() {
-        const { events = {} } = this.props as {
+        const { events = {} } = this._props as {
             events: Record<string, () => void>;
         };
 
@@ -67,7 +67,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     }
 
     private _removeEvents() {
-        const { events = {} } = this.props as {
+        const { events = {} } = this._props as {
             events: Record<string, () => void>;
         };
 
@@ -129,7 +129,7 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     }
 
     public setProps(nextProps: Props) {
-        Object.assign(this.props || {}, nextProps);
+        Object.assign(this._props || {}, nextProps);
     }
 
     get element() {
@@ -147,8 +147,8 @@ export class Block<Props extends Partial<IProps> = Record<string, unknown>> {
     }
 
     private _render() {
-        if (this.props) {
-            const fragment = this.compile(this.render(), this.props);
+        if (this._props) {
+            const fragment = this.compile(this.render(), this._props);
 
             const newElement = fragment.firstElementChild as HTMLElement;
 

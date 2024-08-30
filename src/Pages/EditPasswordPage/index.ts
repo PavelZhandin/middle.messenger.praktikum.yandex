@@ -46,8 +46,8 @@ class EditPasswordPage extends Block<IEditPasswordPageProps> {
 
     protected render(): string {
         let avatarSrc = "";
-        if (this.props.user) {
-            avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${this.props.user?.avatar}"`;
+        if (this._props.user) {
+            avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${this._props.user?.avatar}"`;
         }
         return `
         <div class="editPassword-container">

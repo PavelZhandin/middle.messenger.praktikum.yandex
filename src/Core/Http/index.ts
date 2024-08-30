@@ -1,14 +1,14 @@
 import { ERestMethod } from "../../Enums/http";
 // import { THttpMethod, TOptionsRequest } from "../../Models/http";
 
-function queryStringify(data: object) {
-    let result = "?";
-
-    Object.entries(data).forEach(([key, value]) => {
-        result = result.concat(key, "=", value, "&");
-    });
-
-    return result;
+function queryStringify(data: object): string {
+    let query = "?";
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of Object.entries(data)) {
+        query = query.concat(encodeURIComponent(key), "=", encodeURIComponent(value), "&");
+    }
+    query = query.slice(0, -1);
+    return query;
 }
 
 function setHeaders(xhr: XMLHttpRequest, headers: object) {
@@ -25,7 +25,7 @@ interface Options {
     query?: object;
 }
 
-class HTTPClient {
+export class HTTPClient {
     private base: string = "https://ya-praktikum.tech/api/v2";
 
     constructor(endpoint: string) {
@@ -34,12 +34,8 @@ class HTTPClient {
 
     get<TResponse>(path: string, options: Options = {}): Promise<TResponse> {
         return this.request<TResponse>(
-            this.base.concat(path),
-            {
-                ...options,
-                method: ERestMethod.GET,
-                query: options.data,
-            },
+            this.base.concat(path).concat(queryStringify(options.data ?? {})),
+            { ...options, method: ERestMethod.GET },
             options.timeout,
         );
     }
@@ -112,5 +108,3 @@ class HTTPClient {
         });
     }
 }
-
-export default HTTPClient;

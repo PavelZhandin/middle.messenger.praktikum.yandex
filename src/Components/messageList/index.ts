@@ -34,7 +34,7 @@ class MessageList extends Block<IMessageListProps> {
     }
 
     render() {
-        const { currentChatId, currentChatUsers } = this.props;
+        const { currentChatId, currentChatUsers } = this._props;
         if (currentChatId && currentChatUsers) {
             return `
                 <div class="message-list">

@@ -1,6 +1,6 @@
 import { LoginRequest, SignupRequest, SignupResponse } from "./types";
 import { IUser } from "../../../Models/IUser";
-import HTTPClient from "../../Http";
+import { HTTPClient } from "../../Http";
 import { APIError } from "../types";
 
 const authAPIInstance = new HTTPClient("/auth");

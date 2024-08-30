@@ -19,7 +19,7 @@ class ProfileAvatar extends Block {
     }
 
     protected render() {
-        const { src, isSmall } = this.props;
+        const { src, isSmall } = this._props;
         const divClass = isSmall
             ? [styles.userImage, styles.userImageSmall].join(" ")
             : styles.userImage;

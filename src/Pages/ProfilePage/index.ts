@@ -32,7 +32,7 @@ class ProfilePage extends Block<ProfilePageProps> {
     protected render(): string {
         let avatarSrc = "";
         const { avatar, email, login, first_name, second_name, display_name, phone } =
-            this.props?.user || {};
+            this._props?.user || {};
 
         if (avatar !== null) {
             avatarSrc = `src="https://ya-praktikum.tech/api/v2/resources${avatar}"`;

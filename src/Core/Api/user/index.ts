@@ -1,4 +1,4 @@
-import HTTPClient from "../../Http";
+import { HTTPClient } from "../../Http";
 
 const userAPIInstance = new HTTPClient("/user");
 

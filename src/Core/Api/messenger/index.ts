@@ -1,6 +1,6 @@
 import { IChat } from "../../../Models/Chat";
 import { IUser } from "../../../Models/IUser";
-import HTTPClient from "../../Http";
+import { HTTPClient } from "../../Http";
 import { ChatWebsocket } from "./chat.websocket";
 
 const chatAPIInstance = new HTTPClient("/chats");

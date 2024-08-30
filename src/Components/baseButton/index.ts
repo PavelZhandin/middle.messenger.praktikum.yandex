@@ -12,7 +12,7 @@ export class BaseButton extends Block {
     }
 
     protected render(): string {
-        const { className } = this.props;
+        const { className } = this._props;
 
         return `
         <button class="button ${className}" type="button">

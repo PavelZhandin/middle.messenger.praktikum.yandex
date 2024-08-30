@@ -8,7 +8,7 @@ class Router {
 
     private history: History = window.history;
 
-    private currentRoute: Route | null = null;
+    private _currentRoute: Nullable<Route> = null;
 
     private rootQuery: string = "";
 
@@ -20,6 +20,10 @@ class Router {
         this.rootQuery = rootQuery;
 
         Router.instance = this;
+    }
+
+    public get currentRoute() {
+        return this._currentRoute;
     }
 
     public use(pathname: string, component: typeof Block<any> | any): Router {
@@ -38,7 +42,7 @@ class Router {
         this.onRoute(window.location.pathname);
     }
 
-    protected onRoute(pathname: string): void {
+    public onRoute(pathname: string): void {
         const route = this.getRoute(pathname);
         if (!route) {
             return;
@@ -48,7 +52,7 @@ class Router {
             this.currentRoute.leave();
         }
 
-        this.currentRoute = route;
+        this._currentRoute = route;
 
         route.render();
     }

@@ -29,7 +29,7 @@ export class InputValidated extends Block<any> {
 
     private validate() {
         const input = this.refs.input.element as HTMLInputElement;
-        const error = this.props.validate?.(input.value);
+        const error = this._props.validate?.(input.value);
 
         if (error) {
             this.refs.errorLine.setProps({ error });
@@ -41,7 +41,7 @@ export class InputValidated extends Block<any> {
     }
 
     protected render(): string {
-        const { name, label, type, value = "", className = "", placeholder = "" } = this.props;
+        const { name, label, type, value = "", className = "", placeholder = "" } = this._props;
         return `
       <div class="inputField">
         {{{ Input
