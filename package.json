@@ -17,6 +17,11 @@
         "prettier": "npx prettier src test --check",
         "prettier:fix": "npm run prettier -- --write"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm-run-all test lint:all"
+        }
+    },
     "devDependencies": {
         "@eslint/eslintrc": "github:eslint/eslintrc",
         "@types/chai": "^4.3.19",
@@ -30,6 +35,7 @@
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.1",
+        "husky": "^9.1.5",
         "jsdom": "^25.0.0",
         "mocha": "^10.7.3",
         "prettier": "3.3.3",
